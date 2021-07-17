@@ -6,30 +6,33 @@
     android:layout_height="wrap_content"
     tools:context=".HorizontalQuantitizer">
 
-    <ImageButton
+    <TextView
+        android:id="@+id/quantity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/decrease_ib"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <ImageView
         android:id="@+id/decrease_ib"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/decrease_image_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_minus"/>
 
-    <TextView
-        android:id="@+id/quantity_tv"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        app:layout_constraintStart_toEndOf="@id/decrease_ib"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="0"
-        android:gravity="center"
-        android:textStyle="bold"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/increase_ib"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:contentDescription="@string/decrease_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/increase_image_button"
         app:layout_constraintStart_toEndOf="@id/quantity_tv"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_plus"/>
