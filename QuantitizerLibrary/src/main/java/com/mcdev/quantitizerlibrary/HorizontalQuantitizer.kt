@@ -104,4 +104,8 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.minimumWidth = width * density.toInt()
         binding.increaseIb.minimumHeight = height * density.toInt()
     }
+
+    fun getSelectedValue(): Int {
+        return currentValue
+    }
 }
