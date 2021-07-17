@@ -31,9 +31,9 @@ Sample implementation [here](app/)
 
 ### Horizontal Quantitizer
 
-<img src="https://user-images.githubusercontent.com/20203694/126048496-1833eb7c-79ef-4dd4-b958-3d3e241b3c49.gif" alt="demo"  width="400" />
-
 - Add `HorizontalQuantitizer` in your layout xml file
+
+<img src="https://user-images.githubusercontent.com/20203694/126048496-1833eb7c-79ef-4dd4-b958-3d3e241b3c49.gif" alt="demo"  width="400" />
 
 ```xml
     <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
