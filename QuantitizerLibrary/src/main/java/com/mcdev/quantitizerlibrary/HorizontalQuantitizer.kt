@@ -2,6 +2,7 @@ package com.mcdev.quantitizerlibrary
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -21,10 +22,13 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     ConstraintLayout(context, attributeSet, defStyle){
 
     private val DURATION = 300L
+    private val translation = "translationX"
     private val binding = ActivityHorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
     private var currentValue: Int = 0
 
     init {
+        setMinValue(currentValue)
+
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
             doDec()
@@ -36,6 +40,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         }
     }
 
+    fun setMinValue(value: Int) {
+        //todo enforce minimum value
+        currentValue = value
+        binding.quantityTv.text = value.toString()
+    }
     private fun doInc() {
         animateInc()
         val increasedValue: Int = currentValue.inc()
@@ -51,7 +60,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, "translationX", 0f, 200f);
+        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, 200f);
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
     }
@@ -61,14 +70,14 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             {
                 binding.quantityTv.text = currentValue.toString()
 
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, "translationX", 200f, 0f);
+                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 200f, 0f);
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
             }, DURATION)
     }
 
     private fun animateDec() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, "translationX", 0f, -200f);
+        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, -200f);
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
     }
@@ -78,9 +87,21 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             {
                 binding.quantityTv.text = currentValue.toString()
 
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, "translationX", -200f, 0f);
+                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, -200f, 0f);
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
             }, DURATION)
+    }
+
+    fun setIconWidthAndHeight(width: Int, height: Int) {
+        val density = Resources.getSystem().displayMetrics.density
+
+        binding.decreaseIb.requestLayout()
+        binding.decreaseIb.layoutParams.width = width * density.toInt()
+        binding.decreaseIb.layoutParams.height = height * density.toInt()
+
+        binding.increaseIb.requestLayout()
+        binding.increaseIb.minimumWidth = width * density.toInt()
+        binding.increaseIb.minimumHeight = height * density.toInt()
     }
 }

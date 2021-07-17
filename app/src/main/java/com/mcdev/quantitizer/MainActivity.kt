@@ -12,5 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         hQ = findViewById(R.id.h_q)
+        hQ.apply {
+//            setIconWidthAndHeight(30, 30)
+        }
     }
 }
