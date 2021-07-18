@@ -1,4 +1,3 @@
-![2021_07_18_08_46_40]()
 # Quantitizer
 ![Jit](https://img.shields.io/jitpack/v/github/kojofosu/Quantitizer?style=for-the-badge) 
 
