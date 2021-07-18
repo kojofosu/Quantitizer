@@ -86,6 +86,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, 200f)
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
+
+        val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 0f, 20f)
+        animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
+        animator2.start()
     }
 
     private fun animateNextInc() {
@@ -96,6 +100,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
                 val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 200f, 0f)
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
+
+                val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 20f, 0f)
+                animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+                animator2.start()
             }, DURATION
         )
     }
@@ -104,6 +112,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, -200f)
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
+
+        val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 0f, -20f)
+        animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
+        animator2.start()
     }
 
     private fun animateNextDec() {
@@ -114,6 +126,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
                 val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, -200f, 0f)
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
+
+                val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, -20f, 0f)
+                animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+                animator2.start()
             }, DURATION
         )
     }

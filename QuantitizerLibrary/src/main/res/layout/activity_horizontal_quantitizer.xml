@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/decrease_ib"
-        android:layout_width="35dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:contentDescription="@string/decrease_image_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
 
     <ImageView
         android:id="@+id/increase_ib"
-        android:layout_width="35dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:contentDescription="@string/increase_image_button"
         app:layout_constraintStart_toEndOf="@id/quantity_tv"
