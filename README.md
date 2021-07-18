@@ -1,3 +1,4 @@
+![2021_07_18_08_46_40]()
 # Quantitizer
 ![Jit](https://img.shields.io/jitpack/v/github/kojofosu/Quantitizer?style=for-the-badge) 
 
@@ -33,7 +34,7 @@ Sample implementation [here](app/)
 
 - Add `HorizontalQuantitizer` in your layout xml file
 
-<img src="https://user-images.githubusercontent.com/20203694/126048496-1833eb7c-79ef-4dd4-b958-3d3e241b3c49.gif" alt="demo"  width="400" />
+<img src="https://user-images.githubusercontent.com/20203694/126061466-a4a98491-c0ad-4af9-bfde-f4ee486531ff.gif" alt="demo"  width="400" />
 
 ```xml
     <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
