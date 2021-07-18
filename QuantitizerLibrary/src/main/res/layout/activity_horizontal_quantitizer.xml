@@ -25,20 +25,22 @@
     <ImageView
         android:id="@+id/decrease_ib"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/decrease_image_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_minus"/>
+        android:src="@drawable/ic_minus"
+        android:padding="10dp"/>
 
 
     <ImageView
         android:id="@+id/increase_ib"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/increase_image_button"
         app:layout_constraintStart_toEndOf="@id/quantity_tv"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_plus"/>
+        android:src="@drawable/ic_plus"
+        android:padding="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private var currentValue: Int = 0
 
     init {
-        setMinValue(currentValue)
+        setValue(currentValue)
 
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
@@ -61,8 +61,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         })
     }
 
-    fun setMinValue(value: Int) {
-        //todo enforce minimum value
+    fun setValue(value: Int) {
         currentValue = value
         binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
     }
@@ -142,8 +141,8 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.decreaseIb.layoutParams.height = height * density.toInt()
 
         binding.increaseIb.requestLayout()
-        binding.increaseIb.minimumWidth = width * density.toInt()
-        binding.increaseIb.minimumHeight = height * density.toInt()
+        binding.increaseIb.layoutParams.width  = width * density.toInt()
+        binding.increaseIb.layoutParams.height  = height * density.toInt()
     }
 
     fun getSelectedValue(): Int {
