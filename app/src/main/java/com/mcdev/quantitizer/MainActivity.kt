@@ -13,11 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         hQ = findViewById(R.id.h_q)
 
-
         hQ.apply {
-            setValue(59)
+            value = 0
             setIconWidthAndHeight(60, 60)
-            var value = getSelectedValue()
         }
     }
 }

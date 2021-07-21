@@ -9,10 +9,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
 import com.mcdev.quantitizerlibrary.databinding.ActivityHorizontalQuantitizerBinding
+
 
 class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
                                                       attributeSet: AttributeSet? = null ,
@@ -23,8 +27,44 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private val binding = ActivityHorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
     private var currentValue: Int = 0
 
+    private var _minValue:Int = 0
+    private var _maxValue:Int? = null
+
+    var minValue: Int
+        get() = _minValue
+        set(value) {
+            _minValue = value
+        }
+
+    var maxValue: Int?
+        get() = _maxValue
+        set(value) {
+            _maxValue = value
+        }
+
+    var value: Int
+        get() = currentValue
+        set(value) {
+            currentValue = value
+            binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
+        }
+
     init {
-        setValue(currentValue)
+        val a = context.obtainStyledAttributes(
+            attributeSet, R.styleable.HorizontalQuantitizer, defStyle, 0
+        )
+
+        minValue = a.getInteger(
+            R.styleable.HorizontalQuantitizer_minValue, 0
+        )
+
+        maxValue = a.getInteger(
+            R.styleable.HorizontalQuantitizer_maxValue, Int.MAX_VALUE
+        )
+
+        value = a.getInteger(
+            R.styleable.HorizontalQuantitizer_value, 0
+        )
 
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
@@ -59,26 +99,43 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             }
 
         })
+
+        /*TypedArrays are heavyweight objects that should be recycled immediately
+         after all the attributes you need have been extracted.*/
+        a.recycle()
     }
 
-    fun setValue(value: Int) {
-        currentValue = value
-        binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
+    private fun wobble(view: View): View {
+        val anim: Animation = TranslateAnimation(-7F, 7F, 0f, 0f)
+        anim.duration = 50L
+        anim.repeatMode = Animation.REVERSE
+        anim.repeatCount = 2
+        view.startAnimation(anim)
+        return view
     }
+
     private fun doInc() {
-        binding.quantityTv.isCursorVisible = false
-        animateInc()
-        val increasedValue: Int = currentValue.inc()
-        currentValue = increasedValue
-        animateNextInc()
+        if (currentValue >= maxValue!!) {
+            wobble(binding.quantityTv)
+        } else {
+            binding.quantityTv.isCursorVisible = false
+            animateInc()
+            val increasedValue: Int = currentValue.inc()
+            currentValue = increasedValue
+            animateNextInc()
+        }
     }
 
     private fun doDec() {
-        binding.quantityTv.isCursorVisible = false
-        animateDec()
-        val decreasedValue: Int = currentValue.dec()
-        currentValue = decreasedValue
-        animateNextDec()
+        if (currentValue <= minValue) {
+            wobble(binding.quantityTv)
+        } else {
+            binding.quantityTv.isCursorVisible = false
+            animateDec()
+            val decreasedValue: Int = currentValue.dec()
+            currentValue = decreasedValue
+            animateNextDec()
+        }
     }
 
     private fun animateInc() {
@@ -143,10 +200,6 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.requestLayout()
         binding.increaseIb.layoutParams.width  = width * density.toInt()
         binding.increaseIb.layoutParams.height  = height * density.toInt()
-    }
-
-    fun getSelectedValue(): Int {
-        return currentValue
     }
 
     companion object {
