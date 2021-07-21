@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".VerticalQuantitizer">
+
+    <EditText
+        android:id="@+id/quantity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/increase_ib"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@null"
+        android:inputType="number"
+        android:labelFor="@id/quantity_tv"
+        android:autofillHints="quantity"/>
+
+    <ImageView
+        android:id="@+id/decrease_ib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/decrease_image_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quantity_tv"
+        android:src="@drawable/ic_minus"
+        android:padding="10dp"/>
+
+
+    <ImageView
+        android:id="@+id/increase_ib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/increase_image_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_plus"
+        android:padding="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

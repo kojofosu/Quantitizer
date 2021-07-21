@@ -16,17 +16,17 @@ import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
-import com.mcdev.quantitizerlibrary.databinding.ActivityHorizontalQuantitizerBinding
+import com.mcdev.quantitizerlibrary.databinding.ActivityVerticalQuantitizerBinding
 
 
 @SuppressLint("CustomViewStyleable")
-class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
-                                                      attributeSet: AttributeSet? = null,
-                                                      defStyle: Int = 0):
+class VerticalQuantitizer @JvmOverloads constructor(context: Context,
+                                                    attributeSet: AttributeSet? = null,
+                                                    defStyle: Int = 0):
     ConstraintLayout(context, attributeSet, defStyle){
 
-    private val translation = "translationX"
-    private val binding = ActivityHorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = ActivityVerticalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
+    private val translation = "translationY"
     private var currentValue: Int = 0
 
     private var _minValue:Int = 0
@@ -52,6 +52,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         }
 
     init {
+        // Load attributes
         val a = context.obtainStyledAttributes(
             attributeSet, R.styleable.Quantitizer, defStyle, 0
         )
@@ -68,6 +69,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             R.styleable.Quantitizer_value, 0
         )
 
+        /*TypedArrays are heavyweight objects that should be recycled immediately
+         after all the attributes you need have been extracted.*/
+        a.recycle()
+
+
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
             doDec()
@@ -83,7 +89,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             binding.quantityTv.isCursorVisible = true
         }
 
-        binding.quantityTv.addTextChangedListener(object: TextWatcher{
+        binding.quantityTv.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 //TODO("Not yet implemented")
             }
@@ -101,14 +107,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             }
 
         })
-
-        /*TypedArrays are heavyweight objects that should be recycled immediately
-         after all the attributes you need have been extracted.*/
-        a.recycle()
     }
 
+
     private fun wobble(view: View): View {
-        val anim: Animation = TranslateAnimation(-7F, 7F, 0f, 0f)
+        val anim: Animation = TranslateAnimation(-0f, 0f, -7f, 7f)
         anim.duration = 50L
         anim.repeatMode = Animation.REVERSE
         anim.repeatCount = 2
@@ -141,11 +144,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, 200f)
+        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, -200f)
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
 
-        val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 0f, 20f)
+        val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 0f, -20f)
         animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator2.start()
     }
@@ -155,11 +158,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             {
                 binding.quantityTv.text = Editable.Factory.getInstance().newEditable(currentValue.toString())
 
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 200f, 0f)
+                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, -200f, 0f)
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
 
-                val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 20f, 0f)
+                val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, -20f, 0f)
                 animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator2.start()
             }, DURATION
@@ -167,11 +170,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateDec() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, -200f)
+        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, 200f)
         animator.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator.start()
 
-        val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 0f, -20f)
+        val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 0f, 20f)
         animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
         animator2.start()
     }
@@ -181,11 +184,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             {
                 binding.quantityTv.text = Editable.Factory.getInstance().newEditable(currentValue.toString())
 
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, -200f, 0f)
+                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 200f, 0f)
                 animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator.start()
 
-                val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, -20f, 0f)
+                val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 20f, 0f)
                 animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
                 animator2.start()
             }, DURATION
@@ -207,4 +210,5 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     companion object {
         private const val DURATION = 300L
     }
+
 }
