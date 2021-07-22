@@ -42,3 +42,15 @@ Sample implementation [here](app/)
         android:layout_height="wrap_content"/>
 ```
 
+### Vertical Quantitizer
+
+- Add `VerticalQuantitizer` in your layout xml file
+
+
+```xml
+    <com.mcdev.quantitizerlibrary.VerticalQuantitizer
+        android:id="@+id/v_q"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+```
+
