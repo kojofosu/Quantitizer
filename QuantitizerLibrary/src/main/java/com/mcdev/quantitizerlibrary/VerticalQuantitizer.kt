@@ -111,10 +111,10 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
 
     private fun wobble(view: View): View {
-        val anim: Animation = TranslateAnimation(-0f, 0f, -7f, 7f)
+        val anim: Animation = TranslateAnimation(-0f, 0f, -20f, 20f)
         anim.duration = 50L
         anim.repeatMode = Animation.REVERSE
-        anim.repeatCount = 2
+        anim.repeatCount = 3
         view.startAnimation(anim)
         return view
     }

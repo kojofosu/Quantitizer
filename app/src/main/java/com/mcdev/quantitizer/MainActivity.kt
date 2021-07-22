@@ -3,9 +3,10 @@ package com.mcdev.quantitizer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+import com.mcdev.quantitizerlibrary.VerticalQuantitizer
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var hQ: HorizontalQuantitizer
+    private lateinit var hQ: VerticalQuantitizer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
