@@ -46,6 +46,7 @@ Sample implementation [here](app/)
 
 - Add `VerticalQuantitizer` in your layout xml file
 
+<img src="https://user-images.githubusercontent.com/20203694/126719791-44a7393d-738f-4c66-94a5-30df087705b5.gif" alt="demo"  width="400" />
 
 ```xml
     <com.mcdev.quantitizerlibrary.VerticalQuantitizer
