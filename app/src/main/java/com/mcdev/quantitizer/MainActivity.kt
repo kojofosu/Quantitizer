@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         hQ.apply {
             value = 0
+//            setPlusIcon(R.drawable.ic_angle_double_small_right)
+//            setMinusIcon(R.drawable.ic_angle_double_small_left)
 //            setPlusIconBackgroundColor(android.R.color.holo_red_dark)
 //            setMinusIconBackgroundColor(android.R.color.holo_red_dark)
 //            setValueBackgroundColor(android.R.color.holo_red_dark)

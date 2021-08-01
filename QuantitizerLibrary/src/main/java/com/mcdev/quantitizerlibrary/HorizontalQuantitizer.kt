@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -56,9 +57,6 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         }
 
     init {
-        //        var gradientDrawable: GradientDrawable = binding.decreaseIb.background as GradientDrawable
-//        gradientDrawable.setColor(Color.GREEN)
-
         val a = context.obtainStyledAttributes(
             attributeSet, R.styleable.Quantitizer, defStyle, 0
         )
@@ -307,6 +305,13 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.quantityTv.setTextColor(colorInt)
     }
 
+    fun setPlusIcon(icon: Int) {
+        binding.increaseIb.setImageResource(icon)
+    }
+
+    fun setMinusIcon(icon: Int) {
+        binding.decreaseIb.setImageResource(icon)
+    }
     companion object {
         private const val DURATION = 300L
     }
