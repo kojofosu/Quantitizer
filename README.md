@@ -54,6 +54,40 @@ Sample implementation [here](app/)
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 ```
+
+#### Get quantity value
+```kotlin
+    var hQ: HorizontalQuantitizer = findViewById(R.id.h_q)
+    var selectedValue = hQ.value    //get current value
+```
+
+### Customize Quantitizer
+
+#### Change icons
+```kotlin
+    hQ.setPlusIcon(R.drawable.ic_angle_double_small_right)
+    hQ.setMinusIcon(R.drawable.ic_angle_double_small_left)
+```
+
+#### Change icon backgrounds
+```kotlin
+    hQ.setPlusIconBackgroundColor(android.R.color.holo_red_dark)
+    hQ.setMinusIconBackgroundColor(android.R.color.holo_red_dark)
+```
+
+#### Change value text and background color
+```kotlin
+    hQ.setValueBackgroundColor(android.R.color.holo_red_dark)
+    hQ.setValueTextColor("#FFFF00")
+```
+
+#### Change icon colors
+```kotlin
+    hQ.setMinusIconColor("#FFFF00")
+    hQ.setPlusIconColor("#FFFF00")
+```
+
+
 ### Licensed under the [MIT License](LICENSE)
 
 ```
