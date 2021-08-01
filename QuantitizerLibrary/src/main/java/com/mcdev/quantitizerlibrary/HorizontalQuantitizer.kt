@@ -219,6 +219,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
     }
 
+    fun setPlusIconBackgroundColor(colorStateList: ColorStateList) {
+        binding.increaseIb.backgroundTintList = colorStateList
+    }
+
     fun setPlusIconBackgroundColorInt(@ColorInt colorInt: Int) {
         binding.increaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
     }
@@ -229,6 +233,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     fun setMinusIconBackgroundColor(colorString: String) {
         binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconBackgroundColor(colorStateList: ColorStateList) {
+        binding.decreaseIb.backgroundTintList = colorStateList
     }
 
     fun setMinusIconBackgroundColorInt(@ColorInt colorInt: Int) {
@@ -243,6 +251,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
     }
 
+    fun setPlusIconColorInt(colorStateList: ColorStateList) {
+        binding.increaseIb.imageTintList = colorStateList
+    }
+
     fun setPlusIconColorInt(@ColorInt colorInt: Int) {
         binding.increaseIb.imageTintList = ColorStateList.valueOf(colorInt)
     }
@@ -253,6 +265,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     fun setMinusIconColor(colorString: String) {
         binding.decreaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconColor(colorStateList: ColorStateList) {
+        binding.decreaseIb.imageTintList = colorStateList
     }
 
     fun setMinusIconColorInt(@ColorInt colorInt: Int) {
@@ -267,8 +283,28 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.bgBg.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
     }
 
+    fun setValueBackgroundColor(colorStateList: ColorStateList) {
+        binding.bgBg.backgroundTintList = colorStateList
+    }
+
     fun setValueBackgroundColorInt(@ColorInt colorInt: Int) {
         binding.bgBg.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setValueTextColor(@ColorRes colorRes: Int) {
+        binding.quantityTv.setTextColor(resources.getColor(colorRes, context.theme))
+    }
+
+    fun setValueTextColor(colorString: String) {
+        binding.quantityTv.setTextColor(Color.parseColor(colorString))
+    }
+
+    fun setValueTextColor(colors: ColorStateList) {
+        binding.quantityTv.setTextColor(colors)
+    }
+
+    fun setValueTextColorInt(@ColorInt colorInt: Int) {
+        binding.quantityTv.setTextColor(colorInt)
     }
 
     companion object {
