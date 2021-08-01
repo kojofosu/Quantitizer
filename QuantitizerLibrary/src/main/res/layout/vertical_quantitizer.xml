@@ -6,6 +6,20 @@
     android:layout_height="wrap_content"
     tools:context=".VerticalQuantitizer">
 
+    <View
+        android:id="@+id/bg_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/decrease_ib"
+        app:layout_constraintEnd_toEndOf="@id/increase_ib"
+        android:background="@android:color/transparent"
+        android:backgroundTintMode="add"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+
     <EditText
         android:id="@+id/quantity_tv"
         android:layout_width="match_parent"
@@ -18,7 +32,7 @@
         android:paddingBottom="10dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:background="@null"
+        android:background="@android:color/transparent"
         android:inputType="number"
         android:labelFor="@id/quantity_tv"
         android:autofillHints="quantity"/>
@@ -29,9 +43,12 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/decrease_image_button"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quantity_tv"
-        android:src="@drawable/ic_minus"
-        android:padding="10dp"/>
+        android:src="@drawable/ic_minus_small"
+        android:background="@drawable/minus_icon_bg"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
 
 
     <ImageView
@@ -41,7 +58,11 @@
         android:contentDescription="@string/increase_image_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_plus"
-        android:padding="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/quantity_tv"
+        android:src="@drawable/ic_plus_small"
+        android:background="@drawable/plus_icon_bg"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

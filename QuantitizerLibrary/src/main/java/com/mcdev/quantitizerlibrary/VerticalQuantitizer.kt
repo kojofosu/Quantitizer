@@ -3,7 +3,9 @@ package com.mcdev.quantitizerlibrary
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -13,6 +15,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
@@ -205,6 +210,110 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.requestLayout()
         binding.increaseIb.layoutParams.width  = width * density.toInt()
         binding.increaseIb.layoutParams.height  = height * density.toInt()
+    }
+
+    fun setPlusIconBackgroundColor(@ColorRes colorRes: Int) {
+        binding.increaseIb.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setPlusIconBackgroundColor(colorString: String) {
+        binding.increaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setPlusIconBackgroundColor(colorStateList: ColorStateList) {
+        binding.increaseIb.backgroundTintList = colorStateList
+    }
+
+    fun setPlusIconBackgroundColorInt(@ColorInt colorInt: Int) {
+        binding.increaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setMinusIconBackgroundColor(@ColorRes colorRes: Int) {
+        binding.decreaseIb.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setMinusIconBackgroundColor(colorString: String) {
+        binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconBackgroundColor(colorStateList: ColorStateList) {
+        binding.decreaseIb.backgroundTintList = colorStateList
+    }
+
+    fun setMinusIconBackgroundColorInt(@ColorInt colorInt: Int) {
+        binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setPlusIconColor(@ColorRes colorRes: Int) {
+        binding.increaseIb.imageTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setPlusIconColor(colorString: String) {
+        binding.increaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setPlusIconColorInt(colorStateList: ColorStateList) {
+        binding.increaseIb.imageTintList = colorStateList
+    }
+
+    fun setPlusIconColorInt(@ColorInt colorInt: Int) {
+        binding.increaseIb.imageTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setMinusIconColor(@ColorRes colorRes: Int) {
+        binding.decreaseIb.imageTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setMinusIconColor(colorString: String) {
+        binding.decreaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconColor(colorStateList: ColorStateList) {
+        binding.decreaseIb.imageTintList = colorStateList
+    }
+
+    fun setMinusIconColorInt(@ColorInt colorInt: Int) {
+        binding.decreaseIb.imageTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setValueBackgroundColor(@ColorRes colorRes: Int) {
+        binding.bgBg.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setValueBackgroundColor(colorString: String) {
+        binding.bgBg.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setValueBackgroundColor(colorStateList: ColorStateList) {
+        binding.bgBg.backgroundTintList = colorStateList
+    }
+
+    fun setValueBackgroundColorInt(@ColorInt colorInt: Int) {
+        binding.bgBg.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setValueTextColor(@ColorRes colorRes: Int) {
+        binding.quantityTv.setTextColor(resources.getColor(colorRes, context.theme))
+    }
+
+    fun setValueTextColor(colorString: String) {
+        binding.quantityTv.setTextColor(Color.parseColor(colorString))
+    }
+
+    fun setValueTextColor(colors: ColorStateList) {
+        binding.quantityTv.setTextColor(colors)
+    }
+
+    fun setValueTextColorInt(@ColorInt colorInt: Int) {
+        binding.quantityTv.setTextColor(colorInt)
+    }
+
+    fun setPlusIcon(@DrawableRes icon: Int) {
+        binding.increaseIb.setImageResource(icon)
+    }
+
+    fun setMinusIcon(@DrawableRes icon: Int) {
+        binding.decreaseIb.setImageResource(icon)
     }
 
     companion object {
