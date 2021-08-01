@@ -259,6 +259,18 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.decreaseIb.imageTintList = ColorStateList.valueOf(colorInt)
     }
 
+    fun setValueBackgroundColor(@ColorRes colorRes: Int) {
+        binding.bgBg.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setValueBackgroundColor(colorString: String) {
+        binding.bgBg.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setValueBackgroundColorInt(@ColorInt colorInt: Int) {
+        binding.bgBg.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
     companion object {
         private const val DURATION = 300L
     }

@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
             value = 0
             setPlusIconBackgroundColor("#FFFF00")
             setPlusIconColor(android.R.color.holo_green_light)
+            setMinusIconBackgroundColor("#FFFF00")
+            setValueBackgroundColor(android.R.color.holo_red_dark)
 //            setIconWidthAndHeight(60, 60)
         }
     }

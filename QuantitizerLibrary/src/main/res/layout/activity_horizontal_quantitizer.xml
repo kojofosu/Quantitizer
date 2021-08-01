@@ -6,6 +6,19 @@
     android:layout_height="wrap_content"
     tools:context=".HorizontalQuantitizer">
 
+    <View
+        android:id="@+id/bg_bg"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/decrease_ib"
+        app:layout_constraintEnd_toEndOf="@id/increase_ib"
+        android:background="@android:color/transparent"
+        android:backgroundTintMode="add"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
     <EditText
         android:id="@+id/quantity_tv"
         android:layout_width="wrap_content"
@@ -17,7 +30,7 @@
         android:paddingEnd="30dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:background="@null"
+        android:background="@android:color/transparent"
         android:inputType="number"
         android:labelFor="@id/quantity_tv"
         android:autofillHints="quantity"/>
@@ -44,6 +57,7 @@
         android:src="@drawable/ic_plus_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/quantity_tv"
         android:contentDescription="@string/increase_image_button"
         android:background="@drawable/plus_icon_bg"
