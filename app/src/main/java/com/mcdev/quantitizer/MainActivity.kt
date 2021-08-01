@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         hQ.apply {
             value = 0
-            setPlusIconBgColor("#FFFF00")
+            setPlusIconBackgroundColor("#FFFF00")
+            setPlusIconColor(android.R.color.holo_green_light)
 //            setIconWidthAndHeight(60, 60)
         }
     }

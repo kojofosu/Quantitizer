@@ -211,29 +211,54 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.layoutParams.height  = height * density.toInt()
     }
 
-    fun setPlusIconBgColor(@ColorRes resId: Int) {
-        binding.increaseIb.backgroundTintList = resources.getColorStateList(resId, context.theme)
+    fun setPlusIconBackgroundColor(@ColorRes colorRes: Int) {
+        binding.increaseIb.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
     }
 
-    fun setPlusIconBgColor(colorString: String) {
+    fun setPlusIconBackgroundColor(colorString: String) {
         binding.increaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
     }
 
-    fun setPlusIconBgColorInt(@ColorInt colorInt: Int) {
+    fun setPlusIconBackgroundColorInt(@ColorInt colorInt: Int) {
         binding.increaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
     }
 
-    fun setMinusIconBgColor(@ColorRes resId: Int) {
-        binding.decreaseIb.backgroundTintList = resources.getColorStateList(resId, context.theme)
+    fun setMinusIconBackgroundColor(@ColorRes colorRes: Int) {
+        binding.decreaseIb.backgroundTintList = resources.getColorStateList(colorRes, context.theme)
     }
 
-    fun setMinusIconBgColor(colorString: String) {
+    fun setMinusIconBackgroundColor(colorString: String) {
         binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
     }
 
-    fun setMinusIconBgColorInt(@ColorInt colorInt: Int) {
+    fun setMinusIconBackgroundColorInt(@ColorInt colorInt: Int) {
         binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
     }
+
+    fun setPlusIconColor(@ColorRes colorRes: Int) {
+        binding.increaseIb.imageTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setPlusIconColor(colorString: String) {
+        binding.increaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setPlusIconColorInt(@ColorInt colorInt: Int) {
+        binding.increaseIb.imageTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setMinusIconColor(@ColorRes colorRes: Int) {
+        binding.decreaseIb.imageTintList = resources.getColorStateList(colorRes, context.theme)
+    }
+
+    fun setMinusIconColor(colorString: String) {
+        binding.decreaseIb.imageTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconColorInt(@ColorInt colorInt: Int) {
+        binding.decreaseIb.imageTintList = ColorStateList.valueOf(colorInt)
+    }
+
     companion object {
         private const val DURATION = 300L
     }
