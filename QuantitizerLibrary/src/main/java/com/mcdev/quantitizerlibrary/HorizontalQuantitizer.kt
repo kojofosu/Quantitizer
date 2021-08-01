@@ -3,7 +3,9 @@ package com.mcdev.quantitizerlibrary
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -13,6 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
@@ -207,6 +211,29 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.layoutParams.height  = height * density.toInt()
     }
 
+    fun setPlusIconBgColor(@ColorRes resId: Int) {
+        binding.increaseIb.backgroundTintList = resources.getColorStateList(resId, context.theme)
+    }
+
+    fun setPlusIconBgColor(colorString: String) {
+        binding.increaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setPlusIconBgColorInt(@ColorInt colorInt: Int) {
+        binding.increaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
+
+    fun setMinusIconBgColor(@ColorRes resId: Int) {
+        binding.decreaseIb.backgroundTintList = resources.getColorStateList(resId, context.theme)
+    }
+
+    fun setMinusIconBgColor(colorString: String) {
+        binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(Color.parseColor(colorString))
+    }
+
+    fun setMinusIconBgColorInt(@ColorInt colorInt: Int) {
+        binding.decreaseIb.backgroundTintList = ColorStateList.valueOf(colorInt)
+    }
     companion object {
         private const val DURATION = 300L
     }

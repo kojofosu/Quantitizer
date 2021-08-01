@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         hQ.apply {
             value = 0
+            setPlusIconBgColor("#FFFF00")
 //            setIconWidthAndHeight(60, 60)
         }
     }
