@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
         hQ.apply {
             value = 0
-            setPlusIconBackgroundColor(android.R.color.holo_red_dark)
-            setMinusIconBackgroundColor(android.R.color.holo_red_dark)
-            setValueBackgroundColor(android.R.color.holo_red_dark)
-            setValueTextColor("#FFFF00")
-            setMinusIconColor("#FFFF00")
-            setPlusIconColor("#FFFF00")
+//            setPlusIconBackgroundColor(android.R.color.holo_red_dark)
+//            setMinusIconBackgroundColor(android.R.color.holo_red_dark)
+//            setValueBackgroundColor(android.R.color.holo_red_dark)
+//            setValueTextColor("#FFFF00")
+//            setMinusIconColor("#FFFF00")
+//            setPlusIconColor("#FFFF00")
 
 //            setIconWidthAndHeight(60, 60)
         }

@@ -20,7 +20,7 @@ import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
-import com.mcdev.quantitizerlibrary.databinding.ActivityHorizontalQuantitizerBinding
+import com.mcdev.quantitizerlibrary.databinding.HorizontalQuantitizerBinding
 
 
 @SuppressLint("CustomViewStyleable")
@@ -30,7 +30,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     ConstraintLayout(context, attributeSet, defStyle){
 
     private val translation = "translationX"
-    private val binding = ActivityHorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = HorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
     private var currentValue: Int = 0
 
     private var _minValue:Int = 0

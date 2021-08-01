@@ -16,7 +16,7 @@ import android.view.animation.TranslateAnimation
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
-import com.mcdev.quantitizerlibrary.databinding.ActivityVerticalQuantitizerBinding
+import com.mcdev.quantitizerlibrary.databinding.VerticalQuantitizerBinding
 
 
 @SuppressLint("CustomViewStyleable")
@@ -25,7 +25,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
                                                     defStyle: Int = 0):
     ConstraintLayout(context, attributeSet, defStyle){
 
-    private val binding = ActivityVerticalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = VerticalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
     private val translation = "translationY"
     private var currentValue: Int = 0
 
