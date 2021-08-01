@@ -18,6 +18,7 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.daasuu.ei.Ease
 import com.daasuu.ei.EasingInterpolator
@@ -305,11 +306,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.quantityTv.setTextColor(colorInt)
     }
 
-    fun setPlusIcon(icon: Int) {
+    fun setPlusIcon(@DrawableRes icon: Int) {
         binding.increaseIb.setImageResource(icon)
     }
 
-    fun setMinusIcon(icon: Int) {
+    fun setMinusIcon(@DrawableRes icon: Int) {
         binding.decreaseIb.setImageResource(icon)
     }
     companion object {
