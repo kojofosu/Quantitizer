@@ -52,6 +52,9 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         }
 
     init {
+        //        var gradientDrawable: GradientDrawable = binding.decreaseIb.background as GradientDrawable
+//        gradientDrawable.setColor(Color.GREEN)
+
         val a = context.obtainStyledAttributes(
             attributeSet, R.styleable.Quantitizer, defStyle, 0
         )

@@ -3,7 +3,6 @@ package com.mcdev.quantitizer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer
-import com.mcdev.quantitizerlibrary.VerticalQuantitizer
 
 class MainActivity : AppCompatActivity() {
     private lateinit var hQ: HorizontalQuantitizer
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         hQ.apply {
             value = 0
-            setIconWidthAndHeight(60, 60)
+//            setIconWidthAndHeight(60, 60)
         }
     }
 }

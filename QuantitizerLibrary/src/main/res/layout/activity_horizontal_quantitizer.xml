@@ -26,21 +26,28 @@
         android:id="@+id/decrease_ib"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/decrease_image_button"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_minus_small"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_minus"
-        android:padding="10dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/decrease_ib"
+        android:contentDescription="@string/decrease_image_button"
+        android:background="@drawable/minus_icon_bg"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"/>
 
 
     <ImageView
         android:id="@+id/increase_ib"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/increase_image_button"
-        app:layout_constraintStart_toEndOf="@id/quantity_tv"
+        android:src="@drawable/ic_plus_small"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_plus"
-        android:padding="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/quantity_tv"
+        android:contentDescription="@string/increase_image_button"
+        android:background="@drawable/plus_icon_bg"
+        android:padding="10dp"
+        android:layout_marginEnd="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
