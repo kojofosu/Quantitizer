@@ -33,7 +33,10 @@ Sample implementation [here](app/)
 
 - Add `HorizontalQuantitizer` in your layout xml file
 
-<img src="https://user-images.githubusercontent.com/20203694/126061466-a4a98491-c0ad-4af9-bfde-f4ee486531ff.gif" alt="demo"  width="400" />
+<div align="left">
+<img src="https://user-images.githubusercontent.com/20203694/127779360-39fbcba6-ab72-4897-88ef-59573a005144.gif" alt="demo"  width="400" />
+<img src="https://user-images.githubusercontent.com/20203694/127779355-c046c8fc-6b95-49f3-b018-5ba6ac38f568.gif" alt="demo"  width="400" />
+</div>
 
 ```xml
     <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
@@ -45,8 +48,10 @@ Sample implementation [here](app/)
 ### Vertical Quantitizer
 
 - Add `VerticalQuantitizer` in your layout xml file
-
-<img src="https://user-images.githubusercontent.com/20203694/126719791-44a7393d-738f-4c66-94a5-30df087705b5.gif" alt="demo"  width="400" />
+<div align="left">
+    <img src="https://user-images.githubusercontent.com/20203694/127779363-fc5fa535-ceeb-44a7-982b-4630073893cf.gif" alt="demo"  width="400" />
+    <img src="https://user-images.githubusercontent.com/20203694/127779361-9850f052-1e06-46ba-b41d-65b96d099c33.gif" alt="demo"  width="400" />
+</div>
 
 ```xml
     <com.mcdev.quantitizerlibrary.VerticalQuantitizer
