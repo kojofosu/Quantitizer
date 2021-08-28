@@ -1,13 +1,10 @@
 package com.mcdev.quantitizerlibrary
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -19,8 +16,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.daasuu.ei.Ease
-import com.daasuu.ei.EasingInterpolator
 import com.mcdev.quantitizerlibrary.databinding.VerticalQuantitizerBinding
 
 
@@ -30,8 +25,9 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
                                                     defStyle: Int = 0):
     ConstraintLayout(context, attributeSet, defStyle){
 
+    private var listener :QuantitizerListener? = null
     private val binding = VerticalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
-    private val translation = "translationY"
+
     private var currentValue: Int = 0
 
     private var _minValue:Int = 0
@@ -83,12 +79,18 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         binding.decreaseIb.setOnClickListener {
             hideKeyboard()
             doDec()
+
+            //listener
+            listener?.onDecrease()
         }
 
         /*increase*/
         binding.increaseIb.setOnClickListener {
             hideKeyboard()
             doInc()
+DURATION
+            //listener
+            listener?.onIncrease()
         }
 
         /*make edit text cursor visible when clicked*/
@@ -131,10 +133,9 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false
-            animateInc()
             val increasedValue: Int = currentValue.inc()
             currentValue = increasedValue
-            animateNextInc()
+            animateInc()
         }
     }
 
@@ -143,63 +144,33 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false
-            animateDec()
             val decreasedValue: Int = currentValue.dec()
             currentValue = decreasedValue
-            animateNextDec()
+            animateDec()
         }
     }
 
     private fun animateInc() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, -200f)
-        animator.interpolator = EasingInterpolator(Ease.BACK_IN)
-        animator.start()
+        //enter animation
+        binding.increaseIb.enterAnimation( translation_Y, 0f, -20f ) // view
 
-        val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, 0f, -20f)
-        animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
-        animator2.start()
-    }
+        //exit animation
+        binding.increaseIb.exitAnimation( translation_Y, -20f, 0f ) // view
 
-    private fun animateNextInc() {
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                binding.quantityTv.text = Editable.Factory.getInstance().newEditable(currentValue.toString())
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_Y, -200f, 0f, currentValue.toString()) // text
 
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, -200f, 0f)
-                animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
-                animator.start()
-
-                val animator2 = ObjectAnimator.ofFloat(binding.increaseIb, translation, -20f, 0f)
-                animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
-                animator2.start()
-            }, DURATION
-        )
     }
 
     private fun animateDec() {
-        val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 0f, 200f)
-        animator.interpolator = EasingInterpolator(Ease.BACK_IN)
-        animator.start()
+        //enter animation
+        binding.decreaseIb.enterAnimation( translation_Y, 0f, 20f ) // view
 
-        val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 0f, 20f)
-        animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
-        animator2.start()
-    }
+        //exit animation
+        binding.decreaseIb.exitAnimation( translation_Y, 20f, 0f ) // view
 
-    private fun animateNextDec() {
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                binding.quantityTv.text = Editable.Factory.getInstance().newEditable(currentValue.toString())
-
-                val animator = ObjectAnimator.ofFloat(binding.quantityTv, translation, 200f, 0f)
-                animator.interpolator = EasingInterpolator(Ease.BACK_OUT)
-                animator.start()
-
-                val animator2 = ObjectAnimator.ofFloat(binding.decreaseIb, translation, 20f, 0f)
-                animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
-                animator2.start()
-            }, DURATION
-        )
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_Y, 200f, 0f, currentValue.toString() ) // text
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {
@@ -318,8 +289,12 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         binding.decreaseIb.setImageResource(icon)
     }
 
-    companion object {
-        private const val DURATION = 300L
+    fun setQuantitizerListener(listener : QuantitizerListener) {
+        this.listener = listener
     }
+
+//    companion object {
+//        private const val DURATION = 300L
+//    }
 
 }
