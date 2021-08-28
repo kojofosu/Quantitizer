@@ -81,11 +81,13 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
+            hideKeyboard()
             doDec()
         }
 
         /*increase*/
         binding.increaseIb.setOnClickListener {
+            hideKeyboard()
             doInc()
         }
 
