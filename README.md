@@ -1,6 +1,7 @@
 # Quantitizer
-![Jit](https://img.shields.io/jitpack/v/github/kojofosu/Quantitizer?style=for-the-badge&color=green) 
-![Android Weekly](https://img.shields.io/badge/Featured%20in%20androidweekly.net%20-Issue%23479-blue?style=for-the-badge)
+![Jit](https://img.shields.io/jitpack/v/github/kojofosu/Quantitizer?style=for-the-badge&color=2F9319) 
+![Android Weekly](https://img.shields.io/badge/Featured%20in%20androidweekly.net%20-Issue%23479-blue?color=D35400&style=for-the-badge)
+![Kotlin Weekly](https://img.shields.io/badge/Featured%20in%20kotlinweekly.net.net%20-Issue%23265-blue?color=D35400&style=for-the-badge)
 
 :sparkles: A quantity stepper for android projects
 
