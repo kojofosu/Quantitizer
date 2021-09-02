@@ -9,7 +9,7 @@ import com.mcdev.quantitizerlibrary.QuantitizerListener
 import com.mcdev.quantitizerlibrary.VerticalQuantitizer
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var hQ: HorizontalQuantitizer
+    private lateinit var hQ: NoValueQuantitizer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 //            value = 0
 //            setbackground(R.color.black)
 
-//            setPlusIcon(R.drawable.ic_angle_double_small_right)
-//            setMinusIcon(R.drawable.ic_angle_double_small_left)
+            setPlusIcon(R.drawable.ic_angle_double_small_right)
+            setMinusIcon(R.drawable.ic_angle_double_small_left)
             setPlusIconBackgroundColor(android.R.color.holo_blue_light)
             setMinusIconBackgroundColor(android.R.color.holo_blue_light)
             setValueBackgroundColor(android.R.color.holo_blue_light)

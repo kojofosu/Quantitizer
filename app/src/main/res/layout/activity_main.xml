@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+    <com.mcdev.quantitizerlibrary.NoValueQuantitizer
         android:id="@+id/h_q"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
