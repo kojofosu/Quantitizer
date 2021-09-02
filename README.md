@@ -4,7 +4,7 @@
 ![Android Weekly](https://img.shields.io/badge/Featured%20in%20androidweekly.net%20-Issue%23479-blue?color=D35400&style=for-the-badge)
 ![Kotlin Weekly](https://img.shields.io/badge/Featured%20in%20kotlinweekly.net.net%20-Issue%23265-blue?color=D35400&style=for-the-badge)
 
-:sparkles: A quantity stepper for android projects
+:sparkles: A highly customizable quantity stepper for android projects
 
 ## Setup
 
@@ -63,12 +63,37 @@ Sample implementation [here](app/)
         android:layout_height="wrap_content"/>
 ```
 
+### No Value Quantitizer
+
+- Add `NoValueQuantitizer` in your layout xml file
+<div align="left">
+    <img src="https://user-images.githubusercontent.com/20203694/131833618-b5165019-dfff-4100-9606-8a6a9c24b167.gif" alt="demo"  width="400" />
+</div>
+
+```xml
+    <com.mcdev.quantitizerlibrary.NoValueQuantitizer
+        android:id="@+id/n_q"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+```
+
 #### Get quantity value
 ```kotlin
     var hQ: HorizontalQuantitizer = findViewById(R.id.h_q)
     var selectedValue = hQ.value    //get current value
 ```
+#### Listener
+```kotlin
+        hQ.setQuantitizerListener(object: QuantitizerListener{
+            override fun onIncrease() {
+                Toast.makeText(this@MainActivity, "inc", Toast.LENGTH_SHORT).show()
+            }
 
+            override fun onDecrease() {
+                Toast.makeText(this@MainActivity, "dec", Toast.LENGTH_SHORT).show()
+            }
+        })
+```
 ### Customize Quantitizer
 
 #### Change icons
