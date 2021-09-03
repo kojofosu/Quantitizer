@@ -34,7 +34,7 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
             animateDec()
 
             //listener
-            listener?.onDecrease()
+            listener?.activateOnDecrease()
         }
 
         /*increase*/
@@ -43,7 +43,7 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
             animateInc()
 
             //listener
-            listener?.onIncrease()
+            listener?.activateOnIncrease()
         }
 
         /*TypedArrays are heavyweight objects that should be recycled immediately

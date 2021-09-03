@@ -81,16 +81,16 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             doDec()
 
             //listener
-            listener?.onDecrease()
+            listener?.activateOnDecrease()
         }
 
         /*increase*/
         binding.increaseIb.setOnClickListener {
             hideKeyboard()
             doInc()
-DURATION
+
             //listener
-            listener?.onIncrease()
+            listener?.activateOnIncrease()
         }
 
         /*make edit text cursor visible when clicked*/

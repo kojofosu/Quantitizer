@@ -75,7 +75,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             doDec()
 
             //listener
-            listener?.onDecrease()
+            listener?.activateOnDecrease()
         }
 
         /*increase*/
@@ -84,7 +84,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             doInc()
 
             //listener
-            listener?.onIncrease()
+            listener?.activateOnIncrease()
         }
 
         /*make edit text cursor visible when clicked*/

@@ -44,6 +44,22 @@ fun View.exitAnimation( translation: String, startPosition: Float, endPosition: 
     )
 }
 
+fun QuantitizerListener.activateOnIncrease(){
+   Handler(Looper.getMainLooper()).postDelayed(
+        {
+            this.onIncrease()
+        }, DURATION
+    )
+}
+
+fun QuantitizerListener.activateOnDecrease(){
+    Handler(Looper.getMainLooper()).postDelayed(
+        {
+            this.onDecrease()
+        }, DURATION
+    )
+}
+
 fun EditText.updateText(translation: String, startPosition: Float, endPosition: Float, text: String ){
     //enter
     enterAnimation(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation

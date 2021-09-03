@@ -9,7 +9,7 @@ import com.mcdev.quantitizerlibrary.QuantitizerListener
 import com.mcdev.quantitizerlibrary.VerticalQuantitizer
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var hQ: NoValueQuantitizer
+    private lateinit var hQ: HorizontalQuantitizer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
