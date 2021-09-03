@@ -2,11 +2,14 @@ package com.mcdev.quantitizer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer
 import com.mcdev.quantitizerlibrary.NoValueQuantitizer
 import com.mcdev.quantitizerlibrary.QuantitizerListener
 import com.mcdev.quantitizerlibrary.VerticalQuantitizer
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var hQ: HorizontalQuantitizer
@@ -15,32 +18,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        hQ = findViewById(R.id.h_q)
+        hQ = findViewById(R.id.quant)
 
-        hQ.apply {
-//            value = 0
-//            setbackground(R.color.black)
 
-            setPlusIcon(R.drawable.ic_angle_double_small_right)
-            setMinusIcon(R.drawable.ic_angle_double_small_left)
-            setPlusIconBackgroundColor(android.R.color.holo_blue_light)
-            setMinusIconBackgroundColor(android.R.color.holo_blue_light)
-            setValueBackgroundColor(android.R.color.holo_blue_light)
-//            setValueTextColor("#FFFF00")
-            setMinusIconColor("#FFFF00")
-            setPlusIconColor("#FFFF00")
+        val priceTV = findViewById<TextView>(R.id.price_tv)
 
-//            setIconWidthAndHeight(60, 60)
-        }
-
-        hQ.setQuantitizerListener(object: QuantitizerListener{
-            override fun onIncrease() {
-                Toast.makeText(this@MainActivity, "inc", Toast.LENGTH_SHORT).show()
-            }
-
+        var price = 417.86
+        hQ.value = 1
+        hQ.setQuantitizerListener(object : QuantitizerListener {
             override fun onDecrease() {
-                Toast.makeText(this@MainActivity, "dec", Toast.LENGTH_SHORT).show()
+                val quantity = hQ.value
+                priceTV.setText("$${roundOffDecimal(price * quantity)}")
             }
+
+            override fun onIncrease() {
+                val quantity = hQ.value
+                priceTV.setText("$${roundOffDecimal(price * quantity)}")
+
+            }
+
         })
+    }
+
+    fun roundOffDecimal(number: Double): Double? {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+        return df.format(number).toDouble()
     }
 }
