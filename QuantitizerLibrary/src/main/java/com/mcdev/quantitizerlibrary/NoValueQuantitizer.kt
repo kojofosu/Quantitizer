@@ -23,6 +23,14 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
     private val translation = "translationX"
     private val binding = NoValueQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
 
+    private var _animateButtons = true
+
+    var animateButtons: Boolean
+        get() = _animateButtons
+        set(value) {
+            _animateButtons = value
+        }
+
     init {
         val a = context.obtainStyledAttributes(
             attributeSet, R.styleable.Quantitizer, defStyle, 0
@@ -52,11 +60,23 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
+        if (_animateButtons) {
+            animatePlusButton()
+        }
+    }
+
+    private fun animateDec() {
+        if (_animateButtons) {
+            animateMinusButton()
+        }
+    }
+
+    private fun animatePlusButton() {
         binding.increaseIb.enterAnimation( translation, 0f, 20f)
         binding.increaseIb.exitAnimation( translation, 20f, 0f)
     }
 
-    private fun animateDec() {
+    private fun animateMinusButton() {
         binding.decreaseIb.enterAnimation( translation, 0f, -20f)
         binding.decreaseIb.exitAnimation( translation, -20f, 0f)
     }
