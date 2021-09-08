@@ -32,6 +32,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     private var _minValue:Int = 0
     private var _maxValue:Int? = null
+    private var _animateButtons = true
 
     var minValue: Int
         get() = _minValue
@@ -50,6 +51,12 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         set(value) {
             currentValue = value
             binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
+        }
+
+    var animateButtons: Boolean
+        get() = _animateButtons
+        set(value) {
+            _animateButtons = value
         }
 
     init {
@@ -151,26 +158,38 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
+        if (_animateButtons) {
+            animatePlusButton()
+        }
+
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_Y, -150f, 0f, currentValue.toString()) // text
+
+    }
+
+    private fun animateDec() {
+        if (_animateButtons) {
+            animateMinusButton()
+        }
+
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_Y, 150f, 0f, currentValue.toString() ) // text
+    }
+
+    private fun animatePlusButton() {
         //enter animation
         binding.increaseIb.enterAnimation( translation_Y, 0f, -20f ) // view
 
         //exit animation
         binding.increaseIb.exitAnimation( translation_Y, -20f, 0f ) // view
-
-        //set current value to edit text
-        binding.quantityTv.updateText( translation_Y, -200f, 0f, currentValue.toString()) // text
-
     }
 
-    private fun animateDec() {
+    private fun animateMinusButton() {
         //enter animation
         binding.decreaseIb.enterAnimation( translation_Y, 0f, 20f ) // view
 
         //exit animation
         binding.decreaseIb.exitAnimation( translation_Y, 20f, 0f ) // view
-
-        //set current value to edit text
-        binding.quantityTv.updateText( translation_Y, 200f, 0f, currentValue.toString() ) // text
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {

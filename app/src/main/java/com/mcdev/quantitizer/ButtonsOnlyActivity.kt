@@ -28,7 +28,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
 
         vq.apply {
             value = 1
-//            animateButtons = true
+            animateButtons = true
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
