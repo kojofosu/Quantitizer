@@ -104,6 +104,11 @@ Sample implementation [here](app/)
 ```
 ### Customize Quantitizer
 
+#### Disable button animations
+```kotlin
+    hQ.buttonAnimationEnabled = false
+```
+
 #### Change icons
 ```kotlin
     hQ.setPlusIcon(R.drawable.ic_angle_double_small_right)

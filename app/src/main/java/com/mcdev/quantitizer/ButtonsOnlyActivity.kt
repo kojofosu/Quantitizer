@@ -17,7 +17,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
 
         hq.apply {
             value = 1
-            animateButtons = false
+            buttonAnimationEnabled = false
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -28,7 +28,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
 
         vq.apply {
             value = 1
-            animateButtons = true
+            buttonAnimationEnabled = false
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -38,7 +38,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
         }
 
         nvq.apply {
-            animateButtons = false
+            buttonAnimationEnabled = false
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")

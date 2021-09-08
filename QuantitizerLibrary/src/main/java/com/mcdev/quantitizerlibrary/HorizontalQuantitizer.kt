@@ -53,7 +53,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
         }
 
-    var animateButtons: Boolean
+    var buttonAnimationEnabled: Boolean
         get() = _animateButtons
         set(value) {
             _animateButtons = value
@@ -155,7 +155,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
-        if (animateButtons) {
+        if (_animateButtons) {
             animatePlusButton()
         }
 
@@ -164,7 +164,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateDec() {
-        if (animateButtons) {
+        if (_animateButtons) {
             animateMinusButton()
         }
 

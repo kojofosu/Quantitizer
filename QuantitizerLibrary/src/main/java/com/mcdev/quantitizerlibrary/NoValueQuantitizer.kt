@@ -25,7 +25,7 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
 
     private var _animateButtons = true
 
-    var animateButtons: Boolean
+    var buttonAnimationEnabled: Boolean
         get() = _animateButtons
         set(value) {
             _animateButtons = value

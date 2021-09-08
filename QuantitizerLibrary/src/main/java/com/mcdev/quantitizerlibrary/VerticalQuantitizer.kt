@@ -53,7 +53,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
         }
 
-    var animateButtons: Boolean
+    var buttonAnimationEnabled: Boolean
         get() = _animateButtons
         set(value) {
             _animateButtons = value
