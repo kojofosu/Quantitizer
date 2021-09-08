@@ -23,8 +23,17 @@ class MainActivity : AppCompatActivity() {
 
         val priceTV = findViewById<TextView>(R.id.price_tv)
 
-        var price = 417.86
-        hQ.value = 1
+        val price = 417.86
+        hQ.apply {
+            value = 1
+//            setPlusIconBackgroundColor("#C19A6B")
+//            setMinusIconBackgroundColor("#C19A6B")
+//            setMinusIconColor("#ffffff")
+//            setPlusIconColor("#ffffff")
+//            setValueBackgroundColor("#47716E")
+//            setValueTextColor("#FFFFFF")
+        }
+
         hQ.setQuantitizerListener(object : QuantitizerListener {
             override fun onDecrease() {
                 val quantity = hQ.value
