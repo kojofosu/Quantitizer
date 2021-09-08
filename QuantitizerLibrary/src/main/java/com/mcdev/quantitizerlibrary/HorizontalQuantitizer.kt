@@ -32,6 +32,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     private var _minValue:Int = 0
     private var _maxValue:Int? = null
+    private var _animateButtons: Boolean = true
 
     var minValue: Int
         get() = _minValue
@@ -50,6 +51,12 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         set(value) {
             currentValue = value
             binding.quantityTv.text = Editable.Factory.getInstance().newEditable(value.toString())
+        }
+
+    var animateButtons: Boolean
+        get() = _animateButtons
+        set(value) {
+            _animateButtons = value
         }
 
     init {
@@ -129,7 +136,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         if (currentValue >= maxValue!!) {
             wobble(binding.quantityTv)
         } else {
-            binding.quantityTv.isCursorVisible = false
+            binding.quantityTv.isCursorVisible = false // hide cursor if it's visible
             val increasedValue: Int = currentValue.inc()
             currentValue = increasedValue
             animateInc()
@@ -140,7 +147,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         if (currentValue <= minValue) {
             wobble(binding.quantityTv)
         } else {
-            binding.quantityTv.isCursorVisible = false
+            binding.quantityTv.isCursorVisible = false  // hide cursor if it's visible
             val decreasedValue: Int = currentValue.dec()
             currentValue = decreasedValue
             animateDec()
@@ -148,26 +155,37 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
+        if (animateButtons) {
+            animatePlusButton()
+        }
 
-            //enter animation
-            binding.increaseIb.enterAnimation( translation_X, 0f, 20f ) // view
-
-            //exit animation
-            binding.increaseIb.exitAnimation( translation_X, 20f, 0f ) // view
-
-            //set current value to edit text
-            binding.quantityTv.updateText( translation_X, 200f, 0f, currentValue.toString()) // text
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_X, 200f, 0f, currentValue.toString()) // text
     }
 
     private fun animateDec() {
+        if (animateButtons) {
+            animateMinusButton()
+        }
+
+        //set current value to edit text
+        binding.quantityTv.updateText( translation_X, -200f, 0f, currentValue.toString() ) // text
+    }
+
+    private fun animatePlusButton() {
+        //enter animation
+        binding.increaseIb.enterAnimation( translation_X, 0f, 20f ) // view
+
+        //exit animation
+        binding.increaseIb.exitAnimation( translation_X, 20f, 0f ) // view
+    }
+
+    private fun animateMinusButton() {
         //enter animation
         binding.decreaseIb.enterAnimation( translation_X, 0f, -20f ) // view
 
         //exit animation
         binding.decreaseIb.exitAnimation( translation_X, -20f, 0f ) // view
-
-        //set current value to edit text
-        binding.quantityTv.updateText( translation_X, -200f, 0f, currentValue.toString() ) // text
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {
