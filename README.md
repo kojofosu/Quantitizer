@@ -6,6 +6,14 @@
 
 :sparkles: A highly customizable quantity stepper for android projects
 
+## Demo
+<div align="left">
+    <img src="https://user-images.githubusercontent.com/20203694/132069805-e0ca2c3b-e1a9-469d-87b3-26104c7b9f8b.gif" alt="demo"  width="200" height="350"/>
+    <img src="https://user-images.githubusercontent.com/20203694/132068856-360e492e-95c0-4c66-be82-7895cab110c3.gif" alt="demo"  width="200" height="350"/>
+    <img src="https://user-images.githubusercontent.com/20203694/132069221-0b26598e-ef8c-4516-b008-18b08b3746f5.gif" alt="demo"  width="200" height="350"/>
+    <img src="https://user-images.githubusercontent.com/20203694/132069463-da915a19-007f-4c8e-a3ed-f8c6d443893e.gif" alt="demo"  width="200" height="350"/>
+</div>
+
 ## Setup
 
 Add it in your root `build.gradle` at the end of repositories:
@@ -37,8 +45,8 @@ Sample implementation [here](app/)
 - Add `HorizontalQuantitizer` in your layout xml file
 
 <div align="left">
-<img src="https://user-images.githubusercontent.com/20203694/127779360-39fbcba6-ab72-4897-88ef-59573a005144.gif" alt="demo"  width="400" />
-<img src="https://user-images.githubusercontent.com/20203694/127779355-c046c8fc-6b95-49f3-b018-5ba6ac38f568.gif" alt="demo"  width="400" />
+<img src="https://user-images.githubusercontent.com/20203694/127779360-39fbcba6-ab72-4897-88ef-59573a005144.gif" alt="demo"  width="300" />
+<img src="https://user-images.githubusercontent.com/20203694/127779355-c046c8fc-6b95-49f3-b018-5ba6ac38f568.gif" alt="demo"  width="300" />
 </div>
 
 ```xml
@@ -52,8 +60,8 @@ Sample implementation [here](app/)
 
 - Add `VerticalQuantitizer` in your layout xml file
 <div align="left">
-    <img src="https://user-images.githubusercontent.com/20203694/127779363-fc5fa535-ceeb-44a7-982b-4630073893cf.gif" alt="demo"  width="400" />
-    <img src="https://user-images.githubusercontent.com/20203694/127779361-9850f052-1e06-46ba-b41d-65b96d099c33.gif" alt="demo"  width="400" />
+    <img src="https://user-images.githubusercontent.com/20203694/127779363-fc5fa535-ceeb-44a7-982b-4630073893cf.gif" alt="demo"  width="300" />
+    <img src="https://user-images.githubusercontent.com/20203694/127779361-9850f052-1e06-46ba-b41d-65b96d099c33.gif" alt="demo"  width="300" />
 </div>
 
 ```xml
@@ -67,7 +75,7 @@ Sample implementation [here](app/)
 
 - Add `NoValueQuantitizer` in your layout xml file
 <div align="left">
-    <img src="https://user-images.githubusercontent.com/20203694/131833618-b5165019-dfff-4100-9606-8a6a9c24b167.gif" alt="demo"  width="400" />
+    <img src="https://user-images.githubusercontent.com/20203694/131833618-b5165019-dfff-4100-9606-8a6a9c24b167.gif" alt="demo"  width="300" />
 </div>
 
 ```xml
