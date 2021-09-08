@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val price = 417.86
         hQ.apply {
             value = 1
-            animateButtons = false
+            animateButtons = true
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
