@@ -30,13 +30,15 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     private var currentValue: Int = 0
 
+    private var _animationDuration = 300L
     private var _minValue:Int = 0
     private var _maxValue:Int? = null
     private var _animateButtons = true
+    private var _animationStyle = AnimationStyle.SWING
 
     var minValue: Int
         get() = _minValue
-        set(value) {
+        set(value,) {
             _minValue = value
         }
 
@@ -57,6 +59,18 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         get() = _animateButtons
         set(value) {
             _animateButtons = value
+        }
+
+    var textAnimationStyle: AnimationStyle
+        get() = _animationStyle
+        set(value) {
+            _animationStyle = value
+        }
+
+    var animationDuration: Long
+        get() = _animationDuration
+        set(value) {
+            _animationDuration = value
         }
 
     init {
@@ -88,7 +102,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             doDec()
 
             //listener
-            listener?.activateOnDecrease()
+            listener?.activateOnDecrease(_animationDuration)
         }
 
         /*increase*/
@@ -97,7 +111,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             doInc()
 
             //listener
-            listener?.activateOnIncrease()
+            listener?.activateOnIncrease(_animationDuration)
         }
 
         /*make edit text cursor visible when clicked*/
@@ -137,7 +151,8 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     private fun doInc() {
         if (currentValue >= maxValue!!) {
-            wobble(binding.quantityTv)
+            //do nothing
+//            wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false
             val increasedValue: Int = currentValue.inc()
@@ -148,7 +163,8 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     private fun doDec() {
         if (currentValue <= minValue) {
-            wobble(binding.quantityTv)
+            //do nothing
+//            wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false
             val decreasedValue: Int = currentValue.dec()
@@ -162,9 +178,23 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             animatePlusButton()
         }
 
-        //set current value to edit text
-        binding.quantityTv.textAnimSwing( translation_Y, -150f, 0f, currentValue.toString()) // text
+        //animate and set current value for edit text
+        when (_animationStyle) {
+            AnimationStyle.SLIDE_IN_REVERSE -> {
+                binding.quantityTv.textAnimSlideInRTL( translation_Y, -150f, 0f, currentValue.toString(), _animationDuration) // text
+            }
+            AnimationStyle.SLIDE_IN -> {
+                binding.quantityTv.textAnimSlideInLTR( translation_Y, 150f, 0f, currentValue.toString(), _animationDuration) // text
 
+            }
+            AnimationStyle.FALL_IN -> {
+                binding.quantityTv.textAnimFallIn( translation_X, -60f, 0f, currentValue.toString(), _animationDuration) // text
+
+            }
+            else -> {
+                binding.quantityTv.textAnimSwing( translation_Y, -150f, 0f, currentValue.toString(), _animationDuration) // text
+            }
+        }
     }
 
     private fun animateDec() {
@@ -172,24 +202,40 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             animateMinusButton()
         }
 
-        //set current value to edit text
-        binding.quantityTv.textAnimSwing( translation_Y, 150f, 0f, currentValue.toString() ) // text
+        //animate and set current value for edit text
+        when (_animationStyle) {
+            AnimationStyle.SLIDE_IN_REVERSE -> {
+                binding.quantityTv.textAnimSlideInRTL( translation_Y, 150f, 0f, currentValue.toString(), _animationDuration ) // text
+
+            }
+            AnimationStyle.SLIDE_IN -> {
+                binding.quantityTv.textAnimSlideInLTR( translation_Y, -150f, 0f, currentValue.toString() , _animationDuration) // text
+
+            }
+            AnimationStyle.FALL_IN -> {
+                binding.quantityTv.textAnimFallIn( translation_X, 60f, 0f, currentValue.toString() , _animationDuration) // text
+
+            }
+            else -> {
+                binding.quantityTv.textAnimSwing( translation_Y, 150f, 0f, currentValue.toString() , _animationDuration) // text
+            }
+        }
     }
 
     private fun animatePlusButton() {
         //enter animation
-        binding.increaseIb.enterAnimationSwing( translation_Y, 0f, -20f ) // view
+        binding.increaseIb.enterAnimationSwing( translation_Y, 0f, -20f , _animationDuration) // view
 
         //exit animation
-        binding.increaseIb.exitAnimationSwing( translation_Y, -20f, 0f ) // view
+        binding.increaseIb.exitAnimationSwing( translation_Y, -20f, 0f , _animationDuration) // view
     }
 
     private fun animateMinusButton() {
         //enter animation
-        binding.decreaseIb.enterAnimationSwing( translation_Y, 0f, 20f ) // view
+        binding.decreaseIb.enterAnimationSwing( translation_Y, 0f, 20f , _animationDuration) // view
 
         //exit animation
-        binding.decreaseIb.exitAnimationSwing( translation_Y, 20f, 0f ) // view
+        binding.decreaseIb.exitAnimationSwing( translation_Y, 20f, 0f , _animationDuration) // view
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {
@@ -311,9 +357,4 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
     fun setQuantitizerListener(listener : QuantitizerListener) {
         this.listener = listener
     }
-
-//    companion object {
-//        private const val DURATION = 300L
-//    }
-
 }
