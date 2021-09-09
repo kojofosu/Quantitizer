@@ -33,6 +33,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private var _minValue:Int = 0
     private var _maxValue:Int? = null
     private var _animateButtons: Boolean = true
+    private var _animationStyle: AnimationStyle = AnimationStyle.SWING
 
     var minValue: Int
         get() = _minValue
@@ -57,6 +58,12 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         get() = _animateButtons
         set(value) {
             _animateButtons = value
+        }
+
+    var textAnimation: AnimationStyle
+        get() = _animationStyle
+        set(value) {
+            _animationStyle = value
         }
 
     init {
@@ -134,7 +141,8 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     private fun doInc() {
         if (currentValue >= maxValue!!) {
-            wobble(binding.quantityTv)
+            //Do nothing
+//            wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false // hide cursor if it's visible
             val increasedValue: Int = currentValue.inc()
@@ -145,7 +153,8 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     private fun doDec() {
         if (currentValue <= minValue) {
-            wobble(binding.quantityTv)
+            //Do nothing
+//            wobble(binding.quantityTv)
         } else {
             binding.quantityTv.isCursorVisible = false  // hide cursor if it's visible
             val decreasedValue: Int = currentValue.dec()
@@ -159,8 +168,42 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             animatePlusButton()
         }
 
-        //set current value to edit text
-        binding.quantityTv.updateText( translation_X, 200f, 0f, currentValue.toString()) // text
+        //animate and set current value for edit text
+        when (_animationStyle) {
+            AnimationStyle.SLIDE_IN_RTL -> {
+                binding.quantityTv.textAnimSlideInRTL(
+                    translation_X,
+                    -200f,
+                    0f,
+                    currentValue.toString()
+                ) // text
+            }
+            AnimationStyle.SLIDE_IN_LTR -> {
+                binding.quantityTv.textAnimSlideInLTR(
+                    translation_X,
+                    200f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+            AnimationStyle.FALL_IN -> {
+                binding.quantityTv.textAnimFallIn(
+                    translation_Y,
+                    60f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+            else -> {
+                binding.quantityTv.textAnimSwing(
+                    translation_X,
+                    200f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+        }
+
     }
 
     private fun animateDec() {
@@ -168,24 +211,57 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             animateMinusButton()
         }
 
-        //set current value to edit text
-        binding.quantityTv.updateText( translation_X, -200f, 0f, currentValue.toString() ) // text
+        //animate and set current value for edit text
+        when (_animationStyle) {
+            AnimationStyle.SLIDE_IN_RTL -> {
+                binding.quantityTv.textAnimSlideInRTL(
+                    translation_X,
+                    200f,
+                    0f,
+                    currentValue.toString()
+                ) // text
+            }
+            AnimationStyle.SLIDE_IN_LTR -> {
+                binding.quantityTv.textAnimSlideInLTR(
+                    translation_X,
+                    -200f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+            AnimationStyle.FALL_IN -> {
+                binding.quantityTv.textAnimFallIn(
+                    translation_Y,
+                    -60f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+            else -> {
+                binding.quantityTv.textAnimSwing(
+                    translation_X,
+                    -200f,
+                    0f,
+                    currentValue.toString()
+                )
+            }
+        }
     }
 
     private fun animatePlusButton() {
         //enter animation
-        binding.increaseIb.enterAnimation( translation_X, 0f, 20f ) // view
+        binding.increaseIb.enterAnimationSwing( translation_X, 0f, 20f ) // view
 
         //exit animation
-        binding.increaseIb.exitAnimation( translation_X, 20f, 0f ) // view
+        binding.increaseIb.exitAnimationSwing( translation_X, 20f, 0f ) // view
     }
 
     private fun animateMinusButton() {
         //enter animation
-        binding.decreaseIb.enterAnimation( translation_X, 0f, -20f ) // view
+        binding.decreaseIb.enterAnimationSwing( translation_X, 0f, -20f ) // view
 
         //exit animation
-        binding.decreaseIb.exitAnimation( translation_X, -20f, 0f ) // view
+        binding.decreaseIb.exitAnimationSwing( translation_X, -20f, 0f ) // view
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {

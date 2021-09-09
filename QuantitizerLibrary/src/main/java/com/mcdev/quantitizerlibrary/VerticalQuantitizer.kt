@@ -163,7 +163,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         }
 
         //set current value to edit text
-        binding.quantityTv.updateText( translation_Y, -150f, 0f, currentValue.toString()) // text
+        binding.quantityTv.textAnimSwing( translation_Y, -150f, 0f, currentValue.toString()) // text
 
     }
 
@@ -173,23 +173,23 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         }
 
         //set current value to edit text
-        binding.quantityTv.updateText( translation_Y, 150f, 0f, currentValue.toString() ) // text
+        binding.quantityTv.textAnimSwing( translation_Y, 150f, 0f, currentValue.toString() ) // text
     }
 
     private fun animatePlusButton() {
         //enter animation
-        binding.increaseIb.enterAnimation( translation_Y, 0f, -20f ) // view
+        binding.increaseIb.enterAnimationSwing( translation_Y, 0f, -20f ) // view
 
         //exit animation
-        binding.increaseIb.exitAnimation( translation_Y, -20f, 0f ) // view
+        binding.increaseIb.exitAnimationSwing( translation_Y, -20f, 0f ) // view
     }
 
     private fun animateMinusButton() {
         //enter animation
-        binding.decreaseIb.enterAnimation( translation_Y, 0f, 20f ) // view
+        binding.decreaseIb.enterAnimationSwing( translation_Y, 0f, 20f ) // view
 
         //exit animation
-        binding.decreaseIb.exitAnimation( translation_Y, 20f, 0f ) // view
+        binding.decreaseIb.exitAnimationSwing( translation_Y, 20f, 0f ) // view
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {

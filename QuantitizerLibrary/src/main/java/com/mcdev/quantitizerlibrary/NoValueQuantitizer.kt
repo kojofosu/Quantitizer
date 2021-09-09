@@ -72,13 +72,13 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animatePlusButton() {
-        binding.increaseIb.enterAnimation( translation, 0f, 20f)
-        binding.increaseIb.exitAnimation( translation, 20f, 0f)
+        binding.increaseIb.enterAnimationSwing( translation, 0f, 20f)
+        binding.increaseIb.exitAnimationSwing( translation, 20f, 0f)
     }
 
     private fun animateMinusButton() {
-        binding.decreaseIb.enterAnimation( translation, 0f, -20f)
-        binding.decreaseIb.exitAnimation( translation, -20f, 0f)
+        binding.decreaseIb.enterAnimationSwing( translation, 0f, -20f)
+        binding.decreaseIb.exitAnimationSwing( translation, -20f, 0f)
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {

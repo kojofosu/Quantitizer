@@ -28,13 +28,29 @@ fun View.hideKeyboard(): Boolean {
 }
 
 
-fun View.enterAnimation(translation: String, startPosition: Float, endPosition: Float) {
+fun View.enterAnimationSwing(translation: String, startPosition: Float, endPosition: Float) {
     val animator2 = ObjectAnimator.ofFloat(this, translation, startPosition, endPosition)
     animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
     animator2.start()
 }
 
-fun View.exitAnimation( translation: String, startPosition: Float, endPosition: Float) {
+fun View.exitAnimationSwing(translation: String, startPosition: Float, endPosition: Float) {
+    Handler(Looper.getMainLooper()).postDelayed(
+        {
+            val animator2 = ObjectAnimator.ofFloat(this, translation, startPosition, endPosition)
+            animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+            animator2.start()
+        }, DURATION
+    )
+}
+
+fun View.enterAnimationSlide(translation: String, startPosition: Float, endPosition: Float) {
+    val animator2 = ObjectAnimator.ofFloat(this, translation, startPosition, endPosition)
+    animator2.interpolator = EasingInterpolator(Ease.BACK_IN)
+    animator2.start()
+}
+
+fun View.exitAnimationSlide(translation: String, startPosition: Float, endPosition: Float) {
     Handler(Looper.getMainLooper()).postDelayed(
         {
             val animator2 = ObjectAnimator.ofFloat(this, translation, startPosition, endPosition)
@@ -60,15 +76,60 @@ fun QuantitizerListener.activateOnDecrease(){
     )
 }
 
-fun EditText.updateText(translation: String, startPosition: Float, endPosition: Float, text: String ){
+fun EditText.textAnimSwing(translation: String, startPosition: Float, endPosition: Float, text: String ){
     //enter
-    enterAnimation(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation
+    enterAnimationSwing(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation
     //exit
     Handler(Looper.getMainLooper()).postDelayed(
         {
             this.setText(text) // update current text
 
             val animator2 = ObjectAnimator.ofFloat(this, translation, startPosition, endPosition)
+            animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+            animator2.start()
+        }, DURATION
+    )
+}
+
+fun EditText.textAnimSlideInLTR(translation: String, startPosition: Float, endPosition: Float, text: String ){
+    //enter
+    enterAnimationSwing(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation
+    //exit
+    Handler(Looper.getMainLooper()).postDelayed(
+        {
+            this.setText(text) // update current text
+
+            val animator2 = ObjectAnimator.ofFloat(this, translation, -startPosition, endPosition)
+            animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+            animator2.start()
+        }, DURATION
+    )
+}
+
+fun EditText.textAnimSlideInRTL(translation: String, startPosition: Float, endPosition: Float, text: String ){
+    //enter
+    enterAnimationSwing(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation
+    //exit
+    Handler(Looper.getMainLooper()).postDelayed(
+        {
+            this.setText(text) // update current text
+
+            val animator2 = ObjectAnimator.ofFloat(this, translation, -startPosition, endPosition)
+            animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
+            animator2.start()
+        }, DURATION
+    )
+}
+
+fun EditText.textAnimFallIn(translation: String, startPosition: Float, endPosition: Float, text: String ){
+    //enter
+    enterAnimationSwing(translation, endPosition, startPosition) // first play enter animation. End and Start positions are inverted for proper animation
+    //exit
+    Handler(Looper.getMainLooper()).postDelayed(
+        {
+            this.setText(text) // update current text
+
+            val animator2 = ObjectAnimator.ofFloat(this, translation, -startPosition, endPosition)
             animator2.interpolator = EasingInterpolator(Ease.BACK_OUT)
             animator2.start()
         }, DURATION
