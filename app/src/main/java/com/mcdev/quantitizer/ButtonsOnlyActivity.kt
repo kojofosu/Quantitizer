@@ -2,6 +2,7 @@ package com.mcdev.quantitizer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mcdev.quantitizerlibrary.AnimationStyle
 import com.mcdev.quantitizerlibrary.HorizontalQuantitizer
 import com.mcdev.quantitizerlibrary.NoValueQuantitizer
 import com.mcdev.quantitizerlibrary.VerticalQuantitizer
@@ -18,6 +19,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
         hq.apply {
             value = 1
             buttonAnimationEnabled = false
+            textAnimation = AnimationStyle.FALL_IN
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
