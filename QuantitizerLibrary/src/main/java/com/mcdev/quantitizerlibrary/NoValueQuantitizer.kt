@@ -23,12 +23,19 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
     private val translation = "translationX"
     private val binding = NoValueQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
 
+    private var _animationDuration = 300L
     private var _animateButtons = true
 
     var buttonAnimationEnabled: Boolean
         get() = _animateButtons
         set(value) {
             _animateButtons = value
+        }
+
+    var animationDuration: Long
+        get() = _animationDuration
+        set(value) {
+            _animationDuration = value
         }
 
     init {
@@ -42,7 +49,7 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
             animateDec()
 
             //listener
-            listener?.activateOnDecrease()
+            listener?.activateOnDecrease(_animationDuration)
         }
 
         /*increase*/
@@ -51,7 +58,7 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
             animateInc()
 
             //listener
-            listener?.activateOnIncrease()
+            listener?.activateOnIncrease(_animationDuration)
         }
 
         /*TypedArrays are heavyweight objects that should be recycled immediately
@@ -72,13 +79,13 @@ class NoValueQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animatePlusButton() {
-        binding.increaseIb.enterAnimationSwing( translation, 0f, 20f)
-        binding.increaseIb.exitAnimationSwing( translation, 20f, 0f)
+        binding.increaseIb.enterAnimationSwing( translation, 0f, 20f, _animationDuration)
+        binding.increaseIb.exitAnimationSwing( translation, 20f, 0f, _animationDuration)
     }
 
     private fun animateMinusButton() {
-        binding.decreaseIb.enterAnimationSwing( translation, 0f, -20f)
-        binding.decreaseIb.exitAnimationSwing( translation, -20f, 0f)
+        binding.decreaseIb.enterAnimationSwing( translation, 0f, -20f, _animationDuration)
+        binding.decreaseIb.exitAnimationSwing( translation, -20f, 0f, _animationDuration)
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {

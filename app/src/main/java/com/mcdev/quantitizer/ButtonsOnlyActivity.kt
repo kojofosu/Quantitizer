@@ -19,7 +19,8 @@ class ButtonsOnlyActivity : AppCompatActivity() {
         hq.apply {
             value = 1
             buttonAnimationEnabled = false
-            textAnimation = AnimationStyle.FALL_IN
+            textAnimationStyle = AnimationStyle.SLIDE_IN
+            animationDuration = 400L
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -31,6 +32,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
         vq.apply {
             value = 1
             buttonAnimationEnabled = false
+            textAnimationStyle = AnimationStyle.FALL_IN
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")

@@ -30,6 +30,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private val binding = HorizontalQuantitizerBinding.inflate(LayoutInflater.from(context), this, true)
     private var currentValue: Int = 0
 
+    private var _animationDuration = 300L
     private var _minValue:Int = 0
     private var _maxValue:Int? = null
     private var _animateButtons: Boolean = true
@@ -60,10 +61,16 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             _animateButtons = value
         }
 
-    var textAnimation: AnimationStyle
+    var textAnimationStyle: AnimationStyle
         get() = _animationStyle
         set(value) {
             _animationStyle = value
+        }
+
+    var animationDuration: Long
+        get() = _animationDuration
+        set(value) {
+            _animationDuration = value
         }
 
     init {
@@ -89,7 +96,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             doDec()
 
             //listener
-            listener?.activateOnDecrease()
+            listener?.activateOnDecrease(_animationDuration)
         }
 
         /*increase*/
@@ -98,7 +105,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             doInc()
 
             //listener
-            listener?.activateOnIncrease()
+            listener?.activateOnIncrease(_animationDuration)
         }
 
         /*make edit text cursor visible when clicked*/
@@ -170,20 +177,22 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
         //animate and set current value for edit text
         when (_animationStyle) {
-            AnimationStyle.SLIDE_IN_RTL -> {
+            AnimationStyle.SLIDE_IN_REVERSE -> {
                 binding.quantityTv.textAnimSlideInRTL(
                     translation_X,
                     -200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 ) // text
             }
-            AnimationStyle.SLIDE_IN_LTR -> {
+            AnimationStyle.SLIDE_IN -> {
                 binding.quantityTv.textAnimSlideInLTR(
                     translation_X,
                     200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
             AnimationStyle.FALL_IN -> {
@@ -191,15 +200,17 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
                     translation_Y,
                     60f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
             else -> {
                 binding.quantityTv.textAnimSwing(
-                    translation_X,
+                    translation_Y,
                     200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
         }
@@ -213,20 +224,22 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
         //animate and set current value for edit text
         when (_animationStyle) {
-            AnimationStyle.SLIDE_IN_RTL -> {
+            AnimationStyle.SLIDE_IN_REVERSE -> {
                 binding.quantityTv.textAnimSlideInRTL(
                     translation_X,
                     200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 ) // text
             }
-            AnimationStyle.SLIDE_IN_LTR -> {
+            AnimationStyle.SLIDE_IN -> {
                 binding.quantityTv.textAnimSlideInLTR(
                     translation_X,
                     -200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
             AnimationStyle.FALL_IN -> {
@@ -234,15 +247,17 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
                     translation_Y,
                     -60f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
             else -> {
                 binding.quantityTv.textAnimSwing(
-                    translation_X,
+                    translation_Y,
                     -200f,
                     0f,
-                    currentValue.toString()
+                    currentValue.toString(),
+                    _animationDuration
                 )
             }
         }
@@ -250,18 +265,18 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     private fun animatePlusButton() {
         //enter animation
-        binding.increaseIb.enterAnimationSwing( translation_X, 0f, 20f ) // view
+        binding.increaseIb.enterAnimationSwing( translation_X, 0f, 20f , _animationDuration) // view
 
         //exit animation
-        binding.increaseIb.exitAnimationSwing( translation_X, 20f, 0f ) // view
+        binding.increaseIb.exitAnimationSwing( translation_X, 20f, 0f , _animationDuration) // view
     }
 
     private fun animateMinusButton() {
         //enter animation
-        binding.decreaseIb.enterAnimationSwing( translation_X, 0f, -20f ) // view
+        binding.decreaseIb.enterAnimationSwing( translation_X, 0f, -20f , _animationDuration) // view
 
         //exit animation
-        binding.decreaseIb.exitAnimationSwing( translation_X, -20f, 0f ) // view
+        binding.decreaseIb.exitAnimationSwing( translation_X, -20f, 0f , _animationDuration) // view
     }
 
     fun setIconWidthAndHeight(width: Int, height: Int) {
