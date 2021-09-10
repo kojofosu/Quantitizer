@@ -147,6 +147,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun doInc() {
+        if (_animateButtons) {
+            animatePlusButton()
+        }
+
+
         if (currentValue >= maxValue!!) {
             //Do nothing
 //            wobble(binding.quantityTv)
@@ -159,6 +164,10 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun doDec() {
+        if (_animateButtons) {
+            animateMinusButton()
+        }
+
         if (currentValue <= minValue) {
             //Do nothing
 //            wobble(binding.quantityTv)
@@ -171,10 +180,6 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateInc() {
-        if (_animateButtons) {
-            animatePlusButton()
-        }
-
         //animate and set current value for edit text
         when (_animationStyle) {
             AnimationStyle.SLIDE_IN_REVERSE -> {
@@ -206,7 +211,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             }
             else -> {
                 binding.quantityTv.textAnimSwing(
-                    translation_Y,
+                    translation_X,
                     200f,
                     0f,
                     currentValue.toString(),
@@ -218,10 +223,6 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun animateDec() {
-        if (_animateButtons) {
-            animateMinusButton()
-        }
-
         //animate and set current value for edit text
         when (_animationStyle) {
             AnimationStyle.SLIDE_IN_REVERSE -> {
@@ -253,7 +254,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             }
             else -> {
                 binding.quantityTv.textAnimSwing(
-                    translation_Y,
+                    translation_X,
                     -200f,
                     0f,
                     currentValue.toString(),
