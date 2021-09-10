@@ -124,15 +124,12 @@ Sample implementation [here](app/)
 
 #### Disable button animations
 
-<img src="https://user-images.githubusercontent.com/20203694/132842534-9483a463-f7bb-4b6d-a622-03ac34172146.gif" alt="demo"  width="300"/>
-
-<img src="https://user-images.githubusercontent.com/20203694/132842537-964fcecf-5897-479a-9d3c-13e98cbaf01e.gif" alt="demo"  width="300"/>
-
-
 
 ```kotlin
     hQ.buttonAnimationEnabled = false //Default true
 ```
+<img src="https://user-images.githubusercontent.com/20203694/132842534-9483a463-f7bb-4b6d-a622-03ac34172146.gif" alt="demo"  width="300"/> <img src="https://user-images.githubusercontent.com/20203694/132842537-964fcecf-5897-479a-9d3c-13e98cbaf01e.gif" alt="demo"  width="300"/>
+
 
 #### Change animation duration
 ```kotlin
