@@ -90,6 +90,7 @@ Sample implementation [here](app/)
     var hQ: HorizontalQuantitizer = findViewById(R.id.h_q)
     var selectedValue = hQ.value    //get current value
 ```
+
 #### Listener
 ```kotlin
         hQ.setQuantitizerListener(object: QuantitizerListener{
@@ -104,9 +105,38 @@ Sample implementation [here](app/)
 ```
 ### Customize Quantitizer
 
-#### Disable button animations
+#### Change text/value animation style
 ```kotlin
-    hQ.buttonAnimationEnabled = false
+    hQ.textAnimationStyle = AnimationStyle.SLIDE_IN
+```
+
+
+#### List of current animations
+
+| ANIMATION          | DEMO                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| `FALL_IN`          | <img src="https://user-images.githubusercontent.com/20203694/132842523-4b5a6adb-dbe7-4626-9fd5-ae13b78790fb.gif" alt="demo"  width="300"/> |
+| `SLIDE_IN`         | <img src="https://user-images.githubusercontent.com/20203694/132842526-495e1db8-fe6f-4a42-8b4d-b466f57526d7.gif" alt="demo"  width="300"/> |
+| `SLIDE_IN_REVERSE` | <img src="https://user-images.githubusercontent.com/20203694/132842528-e2647e2b-35e6-439c-8cc9-c28358d29409.gif" alt="demo"  width="300"/> |
+| `SWING`            | <img src="https://user-images.githubusercontent.com/20203694/132842530-9fbc67c2-9379-4e2e-a13b-63bc7d4cbf89.gif" alt="demo"  width="300"/> |
+
+
+
+#### Disable button animations
+
+<img src="https://user-images.githubusercontent.com/20203694/132842534-9483a463-f7bb-4b6d-a622-03ac34172146.gif" alt="demo"  width="300"/>
+
+<img src="https://user-images.githubusercontent.com/20203694/132842537-964fcecf-5897-479a-9d3c-13e98cbaf01e.gif" alt="demo"  width="300"/>
+
+
+
+```kotlin
+    hQ.buttonAnimationEnabled = false //Default true
+```
+
+#### Change animation duration
+```kotlin
+    hQ.animationDuration = 400L //Default 300L
 ```
 
 #### Change icons
