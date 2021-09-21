@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".ButtonsOnlyActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
-        android:id="@+id/h_quant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+    <data>
 
-    <com.mcdev.quantitizerlibrary.VerticalQuantitizer
-        android:id="@+id/v_qaunt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+        <variable
+            name="viewModel"
+            type="com.mcdev.quantitizer.MainViewModel" />
 
-    <com.mcdev.quantitizerlibrary.NoValueQuantitizer
-        android:id="@+id/nv_quant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+    </data>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".ButtonsOnlyActivity">
+
+        <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
+            android:id="@+id/h_quant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:maxValue="5"
+            app:minValue="1"
+            app:value="@={viewModel.numberYouPiked}"
+            />
+
+        <com.mcdev.quantitizerlibrary.VerticalQuantitizer
+            android:id="@+id/v_qaunt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp" />
+
+        <com.mcdev.quantitizerlibrary.NoValueQuantitizer
+            android:id="@+id/nv_quant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp" />
+
+    </LinearLayout>
+</layout>
