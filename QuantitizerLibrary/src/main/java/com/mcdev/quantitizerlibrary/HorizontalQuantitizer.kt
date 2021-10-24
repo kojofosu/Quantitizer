@@ -107,9 +107,11 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
             } else {
                 doDec()
 
+
                 //listener
                 listener?.activateOnDecrease(_animationDuration)
             }
+
         }
 
         /*increase*/
@@ -178,6 +180,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private fun doInc() {
         if (_animateButtons) {
             animatePlusButton()
+
         }
 
      binding.quantityTv.isCursorVisible = false // hide cursor if it's visible

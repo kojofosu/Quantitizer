@@ -40,6 +40,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
     var minValue: Int
         get() = _minValue
         set(value,) {
+
             if (value >= currentValue) {
                 binding.quantityTv.text =
                     Editable.Factory.getInstance().newEditable(value.toString())
@@ -109,6 +110,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         binding.decreaseIb.setOnClickListener {
             hideKeyboard()
 
+            
             if (minValue >= currentValue) {
                 //do nothing
             } else {
@@ -117,6 +119,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
                 //listener
                 listener?.activateOnDecrease(_animationDuration)
             }
+
         }
 
         /*increase*/
@@ -127,9 +130,11 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             } else {
                 doInc()
 
+
                 //listener
                 listener?.activateOnIncrease(_animationDuration)
             }
+
         }
 
         /*make edit text cursor visible when clicked*/

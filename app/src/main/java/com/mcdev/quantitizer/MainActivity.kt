@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         hQ = findViewById(R.id.quant)
 
 
+
+
         val priceTV = findViewById<TextView>(R.id.price_tv)
 
         val price = 417.86
