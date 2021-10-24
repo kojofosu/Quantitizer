@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -32,17 +33,26 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     private var _animationDuration = 300L
     private var _minValue:Int = 0
-    private var _maxValue:Int? = null
+    private var _maxValue:Int = Int.MAX_VALUE
     private var _animateButtons = true
     private var _animationStyle = AnimationStyle.SWING
 
     var minValue: Int
         get() = _minValue
         set(value,) {
-            _minValue = value
+
+            if (value >= currentValue) {
+                binding.quantityTv.text =
+                    Editable.Factory.getInstance().newEditable(value.toString())
+                currentValue = value
+                _minValue = value
+            } else {
+                _minValue = value
+                currentValue = value
+            }
         }
 
-    var maxValue: Int?
+    var maxValue: Int
         get() = _maxValue
         set(value) {
             _maxValue = value
@@ -99,19 +109,32 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         /*decrease*/
         binding.decreaseIb.setOnClickListener {
             hideKeyboard()
-            doDec()
 
-            //listener
-            listener?.activateOnDecrease(_animationDuration)
+            
+            if (minValue >= currentValue) {
+                //do nothing
+            } else {
+                doDec()
+
+                //listener
+                listener?.activateOnDecrease(_animationDuration)
+            }
+
         }
 
         /*increase*/
         binding.increaseIb.setOnClickListener {
             hideKeyboard()
-            doInc()
+            if (maxValue <= currentValue) {
+                //do  nothing
+            } else {
+                doInc()
 
-            //listener
-            listener?.activateOnIncrease(_animationDuration)
+
+                //listener
+                listener?.activateOnIncrease(_animationDuration)
+            }
+
         }
 
         /*make edit text cursor visible when clicked*/
@@ -133,7 +156,18 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
             }
 
             override fun afterTextChanged(s: Editable?) {
-                //TODO("Not yet implemented")
+                if (s.toString().isEmpty()) {
+                    //do nothing
+                }else if (Integer.parseInt(s.toString()) < minValue) {
+                    binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
+                    currentValue = minValue
+                    Toast.makeText(context, "Min value is $minValue", Toast.LENGTH_SHORT).show()
+                }else if (Integer.parseInt(s.toString()) > maxValue) {
+                    binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
+                    currentValue = minValue
+                    Toast.makeText(context, "Max value is $maxValue", Toast.LENGTH_SHORT).show()
+
+                }
             }
 
         })
@@ -150,27 +184,21 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
     }
 
     private fun doInc() {
-        if (currentValue >= maxValue!!) {
-            //do nothing
-//            wobble(binding.quantityTv)
-        } else {
-            binding.quantityTv.isCursorVisible = false
-            val increasedValue: Int = currentValue.inc()
-            currentValue = increasedValue
-            animateInc()
-        }
+
+        binding.quantityTv.isCursorVisible = false
+        val increasedValue: Int = currentValue.inc()
+        currentValue = increasedValue
+        animateInc()
+
     }
 
     private fun doDec() {
-        if (currentValue <= minValue) {
-            //do nothing
-//            wobble(binding.quantityTv)
-        } else {
-            binding.quantityTv.isCursorVisible = false
-            val decreasedValue: Int = currentValue.dec()
-            currentValue = decreasedValue
-            animateDec()
-        }
+
+        binding.quantityTv.isCursorVisible = false
+        val decreasedValue: Int = currentValue.dec()
+        currentValue = decreasedValue
+        animateDec()
+
     }
 
     private fun animateInc() {
