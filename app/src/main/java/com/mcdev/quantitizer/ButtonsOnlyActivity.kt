@@ -2,10 +2,8 @@ package com.mcdev.quantitizer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mcdev.quantitizerlibrary.AnimationStyle
-import com.mcdev.quantitizerlibrary.HorizontalQuantitizer
-import com.mcdev.quantitizerlibrary.NoValueQuantitizer
-import com.mcdev.quantitizerlibrary.VerticalQuantitizer
+import android.widget.Toast
+import com.mcdev.quantitizerlibrary.*
 
 class ButtonsOnlyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +22,20 @@ class ButtonsOnlyActivity : AppCompatActivity() {
 
             minValue = 3
             maxValue = 7
+            setQuantitizerListener(object : QuantitizerListener{
+                override fun onIncrease() {
+                    Toast.makeText(this@ButtonsOnlyActivity, "inc", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onDecrease() {
+                    Toast.makeText(this@ButtonsOnlyActivity, "desc", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onValueChanged(value: Int) {
+                    Toast.makeText(this@ButtonsOnlyActivity, "value changed to : $value", Toast.LENGTH_SHORT).show()
+                }
+
+            })
 
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
@@ -41,6 +53,23 @@ class ButtonsOnlyActivity : AppCompatActivity() {
             minValue = 5
             maxValue = 8
 
+            setQuantitizerListener(object : QuantitizerListener {
+                override fun onIncrease() {
+                    Toast.makeText(this@ButtonsOnlyActivity, "inc", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onDecrease() {
+                    Toast.makeText(this@ButtonsOnlyActivity, "desc", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onValueChanged(value: Int) {
+                    Toast.makeText(
+                        this@ButtonsOnlyActivity,
+                        "value changed to : $value",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")

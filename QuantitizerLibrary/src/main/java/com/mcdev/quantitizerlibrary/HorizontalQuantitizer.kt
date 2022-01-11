@@ -140,20 +140,23 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 currentValue = if (s.toString().isNotEmpty() || s.toString() != "") {
-                    Integer.parseInt(s.toString())
+                    val value = Integer.parseInt(s.toString())
+                    listener?.onValueChanged(value)
+                    value
                 }else{
                     0
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
+                val value = s.toString().toIntOrNull()
                 if (s.toString().isEmpty()) {
                     //do nothing
-                }else if (Integer.parseInt(s.toString()) < minValue) {
+                }else if (value!! < minValue && s.toString().isBlank().not()) {
                     binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
                     currentValue = minValue
                     Toast.makeText(context, "Min value is $minValue", Toast.LENGTH_SHORT).show()
-                }else if (Integer.parseInt(s.toString()) > maxValue) {
+                }else if (value > maxValue && s.toString().isBlank().not()) {
                     binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
                     currentValue = minValue
                     Toast.makeText(context, "Max value is $maxValue", Toast.LENGTH_SHORT).show()

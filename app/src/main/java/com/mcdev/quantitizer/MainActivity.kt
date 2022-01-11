@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
                 priceTV.setText("$${roundOffDecimal(price * quantity)}")
             }
 
+            override fun onValueChanged(value: Int) {
+                //TODO("Not yet implemented")
+            }
+
             override fun onIncrease() {
                 val quantity = hQ.value
                 priceTV.setText("$${roundOffDecimal(price * quantity)}")
