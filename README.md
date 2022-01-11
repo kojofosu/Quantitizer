@@ -103,6 +103,10 @@ Sample implementation [here](app/)
             override fun onDecrease() {
                 Toast.makeText(this@MainActivity, "dec", Toast.LENGTH_SHORT).show()
             }
+
+            override fun onValueChanged(value: Int) {
+                Toast.makeText(this@ButtonsOnlyActivity, "value changed to : $value", Toast.LENGTH_SHORT).show()
+            }
         })
 ```
 ### Customize Quantitizer
