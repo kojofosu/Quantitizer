@@ -130,6 +130,9 @@ Sample implementation [here](app/)
 
 #### Disable button animations
 
+```kotlin
+    hQ.isReadOnly = false // Disable value input from keyboard. Default false
+```
 
 ```kotlin
     hQ.buttonAnimationEnabled = false //Default true
