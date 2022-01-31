@@ -19,6 +19,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
             buttonAnimationEnabled = false
             textAnimationStyle = AnimationStyle.SLIDE_IN
             animationDuration = 400L
+            isReadOnly = true
 
             minValue = 3
             maxValue = 7
@@ -49,7 +50,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
             value = 1
             buttonAnimationEnabled = false
             textAnimationStyle = AnimationStyle.FALL_IN
-
+            isReadOnly = false
             minValue = 5
             maxValue = 8
 

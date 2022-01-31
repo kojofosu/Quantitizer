@@ -6,6 +6,7 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -36,6 +37,7 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
     private var _maxValue:Int = Int.MAX_VALUE
     private var _animateButtons: Boolean = true
     private var _animationStyle: AnimationStyle = AnimationStyle.SWING
+    private var _isReadOnly: Boolean = false
 
     var minValue: Int
         get() = _minValue
@@ -80,6 +82,12 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         get() = _animationDuration
         set(value) {
             _animationDuration = value
+        }
+
+    var isReadOnly: Boolean
+        get() = _isReadOnly
+        set(value) {
+            isReadOnly(value)
         }
 
     init {
@@ -130,7 +138,9 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
         /*make edit text cursor visible when clicked*/
         binding.quantityTv.setOnClickListener {
-            binding.quantityTv.isCursorVisible = true
+            if (_isReadOnly.not()) {
+                binding.quantityTv.isCursorVisible = true
+            }
         }
 
         binding.quantityTv.addTextChangedListener(object: TextWatcher{
@@ -424,5 +434,22 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
 
     fun setQuantitizerListener(listener : QuantitizerListener) {
         this.listener = listener
+    }
+
+    private fun isReadOnly(isReadOnly: Boolean): Boolean {
+        return if (isReadOnly) {//if user wants read only, then set edittext enabled to false
+            binding.quantityTv.apply {
+                isFocusableInTouchMode = false
+                isCursorVisible = false
+                inputType = InputType.TYPE_NULL
+            }
+            true
+        } else {//else set enabled to true
+            binding.quantityTv.apply {
+                isFocusableInTouchMode = true
+                isCursorVisible = true
+            }
+            false
+        }
     }
 }
