@@ -25,6 +25,11 @@ fun setPikerListener(view: HorizontalQuantitizer, attChange: InverseBindingListe
         override fun onDecrease() {
             attChange.onChange()
         }
+
+        override fun onValueChanged(value: Int) {
+            attChange.onChange()
+        }
+
         override fun onIncrease() {
             attChange.onChange()
         }

@@ -103,6 +103,10 @@ Sample implementation [here](app/)
             override fun onDecrease() {
                 Toast.makeText(this@MainActivity, "dec", Toast.LENGTH_SHORT).show()
             }
+
+            override fun onValueChanged(value: Int) {
+                Toast.makeText(this@ButtonsOnlyActivity, "value changed to : $value", Toast.LENGTH_SHORT).show()
+            }
         })
 ```
 ### Customize Quantitizer
@@ -126,6 +130,9 @@ Sample implementation [here](app/)
 
 #### Disable button animations
 
+```kotlin
+    hQ.isReadOnly = false // Disable value input from keyboard. Default false
+```
 
 ```kotlin
     hQ.buttonAnimationEnabled = false //Default true

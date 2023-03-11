@@ -6,6 +6,7 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -36,6 +37,7 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
     private var _maxValue:Int = Int.MAX_VALUE
     private var _animateButtons = true
     private var _animationStyle = AnimationStyle.SWING
+    private var _isReadOnly: Boolean = false
 
     var minValue: Int
         get() = _minValue
@@ -81,6 +83,12 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         get() = _animationDuration
         set(value) {
             _animationDuration = value
+        }
+
+    var isReadOnly: Boolean
+        get() = _isReadOnly
+        set(value) {
+            isReadOnly(value)
         }
 
     init {
@@ -139,7 +147,9 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
         /*make edit text cursor visible when clicked*/
         binding.quantityTv.setOnClickListener {
-            binding.quantityTv.isCursorVisible = true
+            if (_isReadOnly.not()) {
+                binding.quantityTv.isCursorVisible = true
+            }
         }
 
         binding.quantityTv.addTextChangedListener(object: TextWatcher {
@@ -149,20 +159,23 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 currentValue = if (s.toString().isNotEmpty() || s.toString() != "") {
-                    Integer.parseInt(s.toString())
+                    val value = Integer.parseInt(s.toString())
+                    listener?.onValueChanged(value)
+                    value
                 }else{
                     0
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
+                val value = s.toString().toIntOrNull()
                 if (s.toString().isEmpty()) {
                     //do nothing
-                }else if (Integer.parseInt(s.toString()) < minValue) {
+                }else if (value!! < minValue) {
                     binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
                     currentValue = minValue
                     Toast.makeText(context, "Min value is $minValue", Toast.LENGTH_SHORT).show()
-                }else if (Integer.parseInt(s.toString()) > maxValue) {
+                }else if (value > maxValue) {
                     binding.quantityTv.text = Editable.Factory.getInstance().newEditable(minValue.toString())
                     currentValue = minValue
                     Toast.makeText(context, "Max value is $maxValue", Toast.LENGTH_SHORT).show()
@@ -380,6 +393,23 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
 
     fun setMinusIcon(@DrawableRes icon: Int) {
         binding.decreaseIb.setImageResource(icon)
+    }
+
+    private fun isReadOnly(isReadOnly: Boolean): Boolean {
+        return if (isReadOnly) {//if user wants read only, then set edittext enabled to false
+            binding.quantityTv.apply {
+                isFocusableInTouchMode = false
+                isCursorVisible = false
+                inputType = InputType.TYPE_NULL
+            }
+            true
+        } else {//else set enabled to true
+            binding.quantityTv.apply {
+                isFocusableInTouchMode = true
+                isCursorVisible = true
+            }
+            false
+        }
     }
 
     fun setQuantitizerListener(listener : QuantitizerListener) {
