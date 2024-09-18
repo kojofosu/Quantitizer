@@ -18,6 +18,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.mcdev.quantitizerlibrary.databinding.HorizontalQuantitizerBinding
 
 
@@ -326,6 +327,21 @@ class HorizontalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.requestLayout()
         binding.increaseIb.layoutParams.width  = width * density.toInt()
         binding.increaseIb.layoutParams.height  = height * density.toInt()
+    }
+
+    fun changeShapeAndColorDecrease(color: Int, background: Int) {
+        val drawable = ContextCompat.getDrawable(context, background)
+        drawable?.let {
+            it.setTint(color)
+            binding.decreaseIb.background = it
+        }
+    }
+    fun changeShapeAndColorIncrease(color: Int, background: Int) {
+        val drawable = ContextCompat.getDrawable(context, background)
+        drawable?.let {
+            it.setTint(color)
+            binding.increaseIb.background = it
+        }
     }
 
     fun setPlusIconBackgroundColor(@ColorRes colorRes: Int) {

@@ -1,0 +1,13 @@
+<!-- res/drawable/hexagon_shape.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate
+            android:fromDegrees="30"
+            android:pivotX="50%"
+            android:pivotY="50%">
+            <shape android:shape="rectangle">
+                <solid android:color="#FF9800"/> <!-- Amber color background -->
+            </shape>
+        </rotate>
+    </item>
+</layer-list>
