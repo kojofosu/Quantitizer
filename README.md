@@ -169,6 +169,16 @@ Sample implementation [here](app/)
     hQ.setPlusIconColor("#FFFF00")
 ```
 
+#### Changing the Icon and it's color.
+```kotlin
+     changeShapeAndColorDecrease(Color.parseColor("#FF4500"), R.drawable.heart_shape) // Orange Red
+    changeShapeAndColorIncrease(Color.parseColor("#1E90FF"), R.drawable.shape_x)
+```
+using these mthods inside the required component you will be able to change and customize the shape of the button according to you use 
+```kotlin
+  hq.apply {}
+```
+<img width="301" alt="image" src="https://github.com/user-attachments/assets/78801b8e-0a9c-414e-bf52-813a950a65bf">
 
 ### Licensed under the [MIT License](LICENSE)
 
