@@ -171,7 +171,7 @@ Sample implementation [here](app/)
 
 #### Changing the Icon and it's color.
 ```kotlin
-     changeShapeAndColorDecrease(Color.parseColor("#FF4500"), R.drawable.heart_shape) // Orange Red
+    changeShapeAndColorDecrease(Color.parseColor("#FF4500"), R.drawable.heart_shape) 
     changeShapeAndColorIncrease(Color.parseColor("#1E90FF"), R.drawable.shape_x)
 ```
 using these mthods inside the required component you will be able to change and customize the shape of the button according to you use 
