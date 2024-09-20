@@ -1,5 +1,6 @@
 package com.mcdev.quantitizer
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -27,7 +28,6 @@ class ButtonsOnlyActivity : AppCompatActivity() {
                 override fun onIncrease() {
                     Toast.makeText(this@ButtonsOnlyActivity, "inc", Toast.LENGTH_SHORT).show()
                 }
-
                 override fun onDecrease() {
                     Toast.makeText(this@ButtonsOnlyActivity, "desc", Toast.LENGTH_SHORT).show()
                 }
@@ -37,7 +37,8 @@ class ButtonsOnlyActivity : AppCompatActivity() {
                 }
 
             })
-
+            changeShapeAndColorDecrease(Color.parseColor("#FF4500"), R.drawable.heart_shape) // Orange Red
+            changeShapeAndColorIncrease(Color.parseColor("#1E90FF"), R.drawable.shape_x) // Dodger Blue
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -71,6 +72,8 @@ class ButtonsOnlyActivity : AppCompatActivity() {
                     ).show()
                 }
             })
+            changeShapeAndColorDecrease(Color.parseColor("#32CD32"), R.drawable.circular_background) // Lime Green
+            changeShapeAndColorIncrease(Color.parseColor("#FFD700"), R.drawable.shape_y) // Gold
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -80,6 +83,8 @@ class ButtonsOnlyActivity : AppCompatActivity() {
         }
 
         nvq.apply {
+            changeShapeAndColorDecrease(Color.parseColor("#FF69B4"), R.drawable.circular_background)
+            changeShapeAndColorIncrease(Color.parseColor("#00CED1"), R.drawable.circular_background)
             buttonAnimationEnabled = false
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")

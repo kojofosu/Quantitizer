@@ -1,0 +1,11 @@
+<!-- res/drawable/semi_circle_shape.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="50dp"
+    android:viewportWidth="100"
+    android:viewportHeight="50">
+
+    <path
+        android:fillColor="#2196F3"
+    android:pathData="M 0,50 A 50,50 0 0 1 100,50 L 100,50 Z"/>
+</vector>
