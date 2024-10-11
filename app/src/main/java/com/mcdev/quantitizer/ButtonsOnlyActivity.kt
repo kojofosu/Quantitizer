@@ -39,6 +39,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
             })
             changeShapeAndColorDecrease(Color.parseColor("#FF4500"), R.drawable.heart_shape) // Orange Red
             changeShapeAndColorIncrease(Color.parseColor("#1E90FF"), R.drawable.shape_x) // Dodger Blue
+            changeTextSizeHorizontal(10f)
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
@@ -74,6 +75,7 @@ class ButtonsOnlyActivity : AppCompatActivity() {
             })
             changeShapeAndColorDecrease(Color.parseColor("#32CD32"), R.drawable.circular_background) // Lime Green
             changeShapeAndColorIncrease(Color.parseColor("#FFD700"), R.drawable.shape_y) // Gold
+            changeTextSizeVertical(50f)
 //            setPlusIconBackgroundColor("#C19A6B")
 //            setMinusIconBackgroundColor("#C19A6B")
 //            setMinusIconColor("#ffffff")
