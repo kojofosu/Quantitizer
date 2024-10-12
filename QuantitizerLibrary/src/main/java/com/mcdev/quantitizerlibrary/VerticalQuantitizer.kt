@@ -291,6 +291,9 @@ class VerticalQuantitizer @JvmOverloads constructor(context: Context,
         binding.increaseIb.layoutParams.width  = width * density.toInt()
         binding.increaseIb.layoutParams.height  = height * density.toInt()
     }
+    fun changeTextSizeVertical(size: Float) {
+        binding.quantityTv.textSize = size
+    }
     fun changeShapeAndColorDecrease(color: Int, background: Int) {
         val drawable = ContextCompat.getDrawable(context, background)
         drawable?.let {

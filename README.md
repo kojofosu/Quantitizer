@@ -180,6 +180,18 @@ using these mthods inside the required component you will be able to change and 
 ```
 <img width="301" alt="image" src="https://github.com/user-attachments/assets/78801b8e-0a9c-414e-bf52-813a950a65bf">
 
+#### Use these below methods to change the font size of the Quantizer
+for horizontal 
+```
+ changeTextSizeHorizontal(10f)
+```
+for vertical
+```
+ changeTextSizeVertical(50f)
+```
+<img width="184" alt="image" src="https://github.com/user-attachments/assets/5f83d778-9b65-451e-a457-26def8bb3667">
+
+
 ### Licensed under the [MIT License](LICENSE)
 
 ```
